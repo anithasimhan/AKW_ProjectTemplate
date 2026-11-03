@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Warm Homes, Chennai Families — Mood Board Inspiration Book</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --warm-white:#FAF6EF; --beige:#E6D9C3; --oak:#B58853; --sage:#97AB84; --terracotta:#C0623B; --charcoal:#34322E;
+  --ink:#34322E; --muted:#6F6A60; --line:#E3D8C5;
+  --serif:'Fraunces',Georgia,serif; --sans:'Figtree',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--warm-white);color:var(--ink);line-height:1.6;font-size:16px}
+img{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--terracotta);outline-offset:3px}
+
+/* layout: sticky side index + content */
+.shell{display:grid;grid-template-columns:240px 1fr;min-height:100vh}
+nav.index{position:sticky;top:0;height:100vh;overflow:auto;padding:32px 24px;border-right:1px solid var(--line);background:var(--warm-white)}
+nav.index .brand{font-family:var(--serif);font-size:20px;line-height:1.25;margin-bottom:24px}
+nav.index ol{list-style:none}
+nav.index a{display:block;padding:6px 0;text-decoration:none;color:var(--muted);font-size:14px;border-left:2px solid transparent;padding-left:12px;margin-left:-12px}
+nav.index a:hover,nav.index a.on{color:var(--charcoal);border-left-color:var(--terracotta)}
+main{min-width:0}
+
+/* cover */
+.cover{position:relative;min-height:92vh;display:flex;align-items:flex-end;color:#fff;background:#6b5a46}
+.cover>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cover::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(30,26,20,.82) 0%,rgba(30,26,20,.35) 55%,rgba(30,26,20,.1) 100%)}
+.cover .txt{position:relative;z-index:2;padding:64px clamp(24px,5vw,72px);max-width:880px}
+.cover h1{font-family:var(--serif);font-weight:400;font-size:clamp(40px,6.5vw,88px);line-height:1.02;letter-spacing:-.02em}
+.cover p.vision{margin-top:24px;font-size:clamp(17px,1.6vw,21px);max-width:640px;color:#f3eadb}
+.cover .meta{margin-top:28px;font-size:14px;color:#e0d3bd}
+.cover .strip{position:relative;z-index:2;display:flex;gap:10px;padding:0 clamp(24px,5vw,72px) 40px}
+.cover .strip span{width:44px;height:44px;border-radius:50%;border:2px solid rgba(255,255,255,.7)}
+
+section{padding:88px clamp(24px,5vw,72px) 24px;border-top:1px solid var(--line)}
+section:first-of-type{border-top:0}
+.sec-head{max-width:760px;margin-bottom:40px}
+.sec-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(30px,4vw,52px);line-height:1.1;letter-spacing:-.015em}
+.sec-head p{margin-top:14px;color:var(--muted);font-size:17px}
+
+.group{margin-bottom:56px}
+.group h3{font-family:var(--serif);font-weight:600;font-size:22px;margin-bottom:4px}
+.group .note{color:var(--muted);font-size:15px;max-width:720px;margin-bottom:18px}
+
+/* Pinterest masonry */
+.masonry{columns:4 220px;column-gap:14px}
+.tile{break-inside:avoid;margin-bottom:14px;border-radius:10px;overflow:hidden;background:var(--beige);cursor:zoom-in;position:relative;border:0;display:block;width:100%;padding:0}
+.tile img{width:100%;height:auto;transition:transform .5s ease;background:var(--beige);min-height:120px}
+.tile:hover img{transform:scale(1.04)}
+.tile.r1 img{aspect-ratio:3/4;object-fit:cover}
+.tile.r2 img{aspect-ratio:4/5;object-fit:cover}
+.tile.r3 img{aspect-ratio:1/1;object-fit:cover}
+.tile.r4 img{aspect-ratio:4/3;object-fit:cover}
+.tile.r5 img{aspect-ratio:2/3;object-fit:cover}
+
+/* text cards */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;margin-bottom:56px}
+.card{background:#fff;border:1px solid var(--line);border-radius:6px;padding:26px}
+.card h4{font-family:var(--serif);font-weight:600;font-size:19px;margin-bottom:8px}
+.card p,.card li{font-size:15px;color:#524e46}
+.card ul{padding-left:18px}
+.card.dark{background:var(--charcoal);border-color:var(--charcoal)}
+.card.dark h4{color:#fff}.card.dark p,.card.dark li{color:#ddd3c1}
+
+/* palette */
+.swatches{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0;margin-bottom:56px;border-radius:8px;overflow:hidden;border:1px solid var(--line)}
+.sw{padding:80px 16px 16px;font-size:14px}
+.sw b{display:block;font-family:var(--serif);font-size:18px;font-weight:600}
+
+/* kw */
+.kw-intro{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-bottom:56px}
+
+.cta{margin:72px clamp(24px,5vw,72px) 0;padding:48px 0 72px;border-top:1px solid var(--line);color:var(--muted);font-size:14px;max-width:820px}
+.cta h2{font-family:var(--serif);font-weight:400;font-size:30px;color:var(--ink);margin-bottom:10px}
+
+/* lightbox */
+#lb{position:fixed;inset:0;background:rgba(24,21,17,.92);display:none;align-items:center;justify-content:center;z-index:50;padding:24px}
+#lb.open{display:flex}
+#lb img{max-height:90vh;max-width:92vw;border-radius:6px;object-fit:contain}
+#lb button{position:absolute;background:rgba(255,255,255,.14);color:#fff;border:0;width:48px;height:48px;border-radius:50%;font-size:24px;cursor:pointer}
+#lb button:hover{background:rgba(255,255,255,.3)}
+#lb .x{top:20px;right:20px}#lb .p{left:20px;top:50%}#lb .n{right:20px;top:50%}
+
+#mobtop{display:none}
+@media(max-width:900px){
+  .shell{grid-template-columns:1fr}
+  nav.index{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line);padding:20px 24px}
+  nav.index ol{display:flex;gap:6px 16px;flex-wrap:wrap}
+  nav.index a{border-left:0;margin:0;padding:2px 0}
+  section{padding-top:64px}
+  .masonry{columns:2 150px;column-gap:10px}
+  .tile{margin-bottom:10px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.tile img{transition:none}}
+@media print{nav.index,#lb{display:none}.shell{display:block}.tile{cursor:default}section{break-before:page}}
+</style>
+</head>
+<body>
+<div class="shell">
+<nav class="index" aria-label="Sections">
+  <div class="brand">Warm Homes<br>for Chennai Families</div>
+  <ol id="navlist"></ol>
+</nav>
+<main id="main"></main>
+</div>
+
+<div id="lb" role="dialog" aria-label="Image viewer" aria-modal="true">
+  <button class="x" aria-label="Close">×</button>
+  <button class="p" aria-label="Previous">‹</button>
+  <img alt="">
+  <button class="n" aria-label="Next">›</button>
+</div>
+
+<script>
+/* ---------- IMAGE POOLS (Unsplash CDN ids) ---------- */
+const U = id => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=720&q=70`;
+const UL = id => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=1600&q=80`;
+
+const POOL = {
+living:[
+"1586023492125-27b2c045efd7","1583847268964-b28dc8f51f92","1618221195710-dd6b41faaea6","1618219908412-a29a1bb7b86e","1615529182904-14819c35db37","1631679706909-1844bbd07221","1493663284031-b7e3aefcae8e","1513694203232-719a280e022f","1567016432779-094069958ea5","1555041469-a586c61ea9bc","1567538096630-e0c55bd6374c","1600210492486-724fe5c67fb0","1600607687939-ce8a6c25118c","1600585154340-be6161a56a0c","1600566753190-17f0baa2a6c3","1600607688969-a5bfcd646154","1600210491892-03d54c0aaf87","1615874959474-d609969a20ed","1616486338812-3dadae4b4ace","1616047006789-b7af5afb8c20","1616137466211-f939a420be84","1617806118233-18e1de247200","1616593969747-4797dc75033e","1618220179428-22790b461013","1615873968403-89e068629265","1502672260266-1c1ef2d93688","1560448204-e02f11c3d0e2","1560185007-cde436f6a4d0","1600566752355-35792bedcfea","1600573472592-401b489a3cdc","1600607687644-c7171b42498f","1600585154084-4e5fe7c39198","1600047509807-ba8f99d2cdde","1600566753086-00f18fb6b3ea","1600121848594-d8644e57abab","1615875605825-5eb9bb5d52ac","1616627561950-9f746e330187","1522708323590-d24dbb6b0267","1484101403633-562f891dc89a","1505691938895-1758d7feb511"],
+kitchen:[
+"1556911220-bff31c812dba","1556909114-f6e7ad7d3136","1484154218962-a197022b5858","1556912172-45b7abe8b7e1","1565538810643-b5bdb714032a","1600489000022-c2086d79f9d4","1556909172-54557c7e4fb7","1556912167-f556f1f39fdf","1556910103-1c02745aae4d","1556909212-d5b604d0c90d","1556912998-c57cc6b63cd7","1600585152220-90363fe7e115","1597262975002-c5c3b14bbd62","1600566753051-f0b89df2dd90","1556909190-eccf4a8bf97a","1556909114-44e3e70034e2","1565183997392-2f6f122e5912","1600607687920-4e2a09cf159d","1600585153490-76fb20a32601","1600566753376-12c8ab7fb75b","1600585154526-990dced4db0d"],
+bedroom:[
+"1616594039964-ae9021a400a0","1505693416388-ac5ce068fe85","1522771739844-6a9f6d5f14af","1540518614846-7eded433c457","1560185893-a55cbc8c57e8","1512918728675-ed5a9ecdebfd","1615874694520-474822394e73","1595526114035-0d45ed16cfbf","1618220048045-10a6dbdf83e0","1560448075-cbc16bb4af8e","1598928506311-c55ded91a20c","1590490360182-c33d57733427","1556020685-ae41abfc9365","1631049307264-da0ec9d70304","1578683010236-d716f9a3f461","1600494603989-9650cf6ddd3d","1596178065887-1198b6148b2b","1566665797739-1674de7a421a","1571508601891-ca5e7a713859","1560185127-6ed189bf02f4","1617325247661-675ab4b64ae2","1586105251261-72a756497a11","1588854337236-6889d631faa8","1600121848594-d8644e57abab"],
+office:[
+"1593062096033-9a26b09da705","1518455027359-f3f8164ba6bd","1497366216548-37526070297c","1524758631624-e2822e304c36","1486946255434-2466348c2166","1498050108023-c5249f4df085","1517694712202-14dd9538aa97","1587614382346-4ec70e388b28","1527689368864-3a821dbccc34","1542744173-8e7e53415bb0","1600494448655-ae58f58bc1b5","1593642632559-0c6d3fc62b89","1555421689-d68471e189f2","1519389950473-47ba0277781c","1504384308090-c894fdcc538d","1497215728101-856f4ea42174","1531297484001-80022131f5a1","1461749280684-dccba630e2f6","1516321318423-f06f85e504b3","1550745165-9bc0b252726f","1499914485622-a88fac536970","1571624436279-b272aff752b5"],
+outdoor:[
+"1416879595882-3373a0480b5b","1459156212016-c812468e2115","1485955900006-10f4d324d411","1463320726281-696a485928c7","1558618666-fcd25c85cd64","1466692476868-aef1dfb1e735","1453928582365-b6ad33cbcdf2","1491147334573-44cbb4602074","1509423350716-97f9360b4e09","1598880940080-ff9a29891b85","1512428813834-c702c7702b78","1545241047-6083a3684587","1520412099551-62b6bafeb5bb","1599598425947-5202edd56bdb","1558904541-efa843a96f01","1470058869958-2a77ade41c02","1501004318641-b39e6451bec6","1604762524889-3e2fcc145683","1485909630830-8a5ceb1ecac1","1519710164239-da123dc03ef4"],
+texture:[
+"1581858726788-75bc0f6a952d","1523413651479-597eb2da0ad6","1558618047-3c8c76ca7d13","1533090161767-e6ffed986c88","1604147706283-d7119b5b822c","1618221381711-42ca8ab6e908","1589939705384-5185137a7f0f","1615971677499-5467cbab01c0","1503602642458-232111445657","1538688525198-9b88f6f53126","1586208958839-06c17cacdf08","1565182999561-18d7dc61c393","1506439773649-6e0eb8cfb237","1519974719765-e6559eac2575","1513519245088-0e12902e5a38","1532372320572-cda25653a26d","1600585152915-d208bec867a1","1600566752229-250ed79470f8","1600210492493-0946911123ea","1616486029423-aaa4789e8c9a"]
+};
+
+/* ---------- CONTENT ---------- */
+/* g = group: t title, d note, p pool, s start index, n images */
+const SECTIONS = [
+
+{id:"lifestyle", title:"Chennai family lifestyle",
+ intro:"Homes here work hard: hot, humid days, heavy monsoon weeks, long commutes along OMR and GST Road, and a family routine that now shares the house with Teams calls.",
+ cards:[
+  {h:"Family persona",p:"Karthik (34) and Divya (32), both in IT at Siruseri and Taramani, with a 6-year-old and visiting parents every few months. They rent or own in Perumbakkam, Medavakkam, Porur or Velachery and want a home that feels calm after a loud work week."},
+  {h:"IT professional lifestyle",p:"Early stand-ups with US clients, late evening calls, weekday meals that need to be fast, and a strong need to switch off. Soft lighting, closed storage and a tidy entry keep the day's clutter out of sight."},
+  {h:"Hybrid / WFH culture",p:"Two or three office days a week means a desk that is used often but not daily. Fold-away, window-side or wardrobe-integrated desks work harder than a permanent study."},
+  {h:"Weekend family activities",p:"Filter coffee and a long breakfast, a floor-seating board game session, Sunday cooking with the grandparents, friends dropping in, and an evening at Besant Nagar or the beach."}
+ ],
+ groups:[
+  {t:"Everyday family living",d:"Shared spaces that stay relaxed, easy to clean and ready for guests.",p:"living",s:0,n:5},
+  {t:"Work from home, calmly",d:"Desks that sit comfortably inside a family home.",p:"office",s:0,n:5},
+  {t:"Weekend cooking and meals",d:"Open, bright kitchens and dining tables where the family gathers.",p:"kitchen",s:0,n:5},
+  {t:"Slow weekends and greenery",d:"Balcony mornings, indoor plants and reading corners.",p:"outdoor",s:0,n:5}
+ ]},
+
+{id:"keywords", title:"Design keywords",
+ intro:"Six words guide every decision in this book, from sofa fabric to switch plate.",
+ kw:[
+  {h:"Modern",p:"Clean lines, handleless or slim-profile joinery, restrained decor."},
+  {h:"Warm",p:"Layered 2700–3000K lighting, oak tones and soft textiles against white walls."},
+  {h:"Functional",p:"Every wall earns its keep with storage; every piece has a second job."},
+  {h:"Family-centric",p:"Rounded corners, washable fabrics, zones for kids, parents and grandparents."},
+  {h:"Natural",p:"Cane, jute, cotton, stone and live plants for a lighter feel in humid weather."},
+  {h:"Timeless",p:"Neutral shells with swappable accents, so the home ages gracefully."}
+ ],
+ groups:[
+  {t:"Modern",p:"living",s:5,n:3},{t:"Warm",p:"bedroom",s:0,n:3},{t:"Functional",p:"kitchen",s:5,n:3},
+  {t:"Family-centric",p:"living",s:8,n:3},{t:"Natural",p:"outdoor",s:5,n:4},{t:"Timeless",p:"texture",s:0,n:4}
+ ]},
+
+{id:"palette", title:"Colour palette",
+ intro:"A grounded, sun-friendly palette. Light shells reflect Chennai's strong daylight; earthy accents keep rooms calm instead of clinical.",
+ swatches:[
+  {n:"Warm white",c:"#FAF6EF",u:"Walls and ceilings. Reflects light without glare.",dark:1},
+  {n:"Beige",c:"#E6D9C3",u:"Upholstery, curtains, large rugs.",dark:1},
+  {n:"Oak wood",c:"#B58853",u:"Flooring, shutters, TV panel, furniture.",dark:0},
+  {n:"Sage green",c:"#97AB84",u:"Kids room, wardrobes, accent wall, plants.",dark:1},
+  {n:"Terracotta",c:"#C0623B",u:"Cushions, pottery, a single feature wall.",dark:0},
+  {n:"Charcoal",c:"#34322E",u:"Hardware, window frames, lamps, appliance fronts.",dark:0}
+ ],
+ groups:[
+  {t:"Warm white and beige",p:"living",s:12,n:4},{t:"Oak wood",p:"bedroom",s:6,n:4},{t:"Sage green",p:"outdoor",s:10,n:3},
+  {t:"Terracotta",p:"texture",s:4,n:3},{t:"Charcoal",p:"kitchen",s:10,n:3},{t:"Palette in a room",p:"living",s:16,n:3}
+ ]},
+
+{id:"materials", title:"Material board",
+ intro:"Chosen for humidity, salty coastal air, monsoon dampness and low upkeep. Nothing that swells, flakes or hides mould.",
+ cards:[
+  {h:"Flooring",p:"Matte vitrified wood-look tiles or large-format porcelain. Avoid solid timber on ground floors and near balcony doors."},
+  {h:"Wood finishes",p:"BWP or marine plywood with laminate or PU finish. Light oak and walnut tones hide dust and fingerprints."},
+  {h:"Fabrics",p:"Cotton, linen blends and performance fabrics. Washable covers and quick-dry curtains handle humidity."},
+  {h:"Tiles",p:"Anti-skid matte tiles in bathrooms and utility. Athangudi-inspired patterns bring in local character."},
+  {h:"Stone",p:"Quartz or granite counters. Kota and Tandur stone for sills and balcony edges."},
+  {h:"Metal accents",p:"Brushed brass, matte black and stainless steel. Powder-coated or PVD finishes resist corrosion."}
+ ],
+ groups:[
+  {t:"Flooring",p:"texture",s:5,n:4},{t:"Wood finishes",p:"bedroom",s:10,n:4},{t:"Fabrics",p:"living",s:20,n:3},
+  {t:"Tiles",p:"texture",s:9,n:3},{t:"Stone",p:"kitchen",s:12,n:3},{t:"Metal accents",p:"texture",s:12,n:3}
+ ]},
+
+{id:"onebhk", title:"1 BHK mood board",
+ intro:"Roughly 450–650 sq ft. Think in layers: light colours, multipurpose furniture and vertical storage, so a small home never feels small.",
+ groups:[
+  {t:"Compact living room",d:"Sofa-cum-bed, wall-mounted TV panel, a nesting table pair.",p:"living",s:21,n:5},
+  {t:"Bedroom",d:"Hydraulic storage bed and a full-height wardrobe, with a window-side nook.",p:"bedroom",s:2,n:4},
+  {t:"Kitchen",d:"Single-wall or compact L-shape with a chimney and pull-outs.",p:"kitchen",s:2,n:4},
+  {t:"Work desk",d:"A fold-down or window desk that disappears after hours.",p:"office",s:4,n:4},
+  {t:"Storage ideas",d:"Loft, under-bed and vertical shelving in light finishes.",p:"bedroom",s:14,n:3}
+ ]},
+
+{id:"twobhk", title:"2 BHK family mood board",
+ intro:"Roughly 850–1,200 sq ft. The sweet spot for young families: define zones with light and furniture instead of walls.",
+ groups:[
+  {t:"Living room",d:"Cane and oak accents, a low sofa and a media wall with concealed storage.",p:"living",s:26,n:4},
+  {t:"Dining area",d:"A six-seater with bench seating and a crockery unit along one wall.",p:"kitchen",s:6,n:4},
+  {t:"Kids room",d:"Sage and oak, a bunk or loft bed, open play floor and a study ledge.",p:"bedroom",s:8,n:4},
+  {t:"Home office nook",d:"A desk built into a corner or the bedroom wall, with a task lamp and shelf.",p:"office",s:8,n:4},
+  {t:"Balcony",d:"Slatted seating, planters and a washable rug. Weatherproof by design.",p:"outdoor",s:0,n:4}
+ ]},
+
+{id:"threebhk", title:"3 BHK premium family mood board",
+ intro:"Roughly 1,400–2,000 sq ft. Space to be generous: a dedicated office, a proper guest suite and an entertainment corner that doubles as the evening hangout.",
+ groups:[
+  {t:"Family living room",d:"Large L-shaped sofa, a layered ceiling, warm cove lighting.",p:"living",s:30,n:4},
+  {t:"Master bedroom",d:"Upholstered headboard, bedside wall lights, a walk-in or wall-to-wall wardrobe.",p:"bedroom",s:12,n:4},
+  {t:"Guest room",d:"Calm, uncluttered, with a daybed or double bed, luggage space and a small desk.",p:"bedroom",s:17,n:3},
+  {t:"Dedicated office",d:"Dual monitors, acoustic panels and closed storage for a tidy backdrop.",p:"office",s:12,n:3},
+  {t:"Entertainment area",d:"A soundproof-friendly media wall, recliners and a board-game ledge.",p:"living",s:34,n:3},
+  {t:"Pooja unit",d:"Wood or stone mandir with concealed storage, brass details and a warm spotlight.",p:"texture",s:14,n:3}
+ ]},
+
+{id:"living", title:"Living room inspirations",
+ intro:"Modern Indian style: clean silhouettes with warm wood, brass and handloom textures.",
+ groups:[
+  {t:"Modern Indian style",d:"Contemporary lines with Indian craft: jaali, cane, brass, block print.",p:"living",s:0,n:6},
+  {t:"TV units",d:"Fluted panels, floating shelves and concealed cable management.",p:"living",s:6,n:5},
+  {t:"Seating",d:"Low profile sofas, accent chairs, floor cushions and a bench for casual use.",p:"living",s:11,n:5},
+  {t:"Decor",d:"Terracotta vases, indoor plants, a statement rug and soft table lamps.",p:"living",s:16,n:5}
+ ]},
+
+{id:"kitchen", title:"Modular kitchen inspirations",
+ intro:"Built for Indian cooking: strong chimney, deep drawers, heavy-duty hardware and a surface that wipes clean after tadka.",
+ groups:[
+  {t:"Parallel kitchens",d:"Efficient for narrow plans. Keep the walkway about 1.2 m wide.",p:"kitchen",s:0,n:5},
+  {t:"L-shaped kitchens",d:"Open up to the dining area; room for a small breakfast perch.",p:"kitchen",s:5,n:5},
+  {t:"Storage ideas",d:"Corner carousels, masala pull-outs, tall units and a utility loft.",p:"kitchen",s:10,n:5},
+  {t:"Breakfast counters",d:"A 600 mm overhang with two stools and pendant lights.",p:"kitchen",s:15,n:5}
+ ]},
+
+{id:"bedroom", title:"Bedroom inspirations",
+ intro:"Rest-first rooms with cross-ventilation, blackout layers and a ceiling fan that still looks good.",
+ groups:[
+  {t:"Master bedroom",d:"Quiet colours, warm bedside lighting and a wardrobe wall.",p:"bedroom",s:0,n:7},
+  {t:"Kids room",d:"Sage and oak, playful wall art, bunk beds and study corners.",p:"bedroom",s:7,n:7},
+  {t:"Guest bedroom",d:"Hotel-style calm: crisp bedding, a luggage bench and a small wardrobe.",p:"bedroom",s:14,n:6}
+ ]},
+
+{id:"office", title:"Home office ideas",
+ intro:"Productivity without a corporate feel. Ergonomic basics in a calm, family-friendly wrapper.",
+ groups:[
+  {t:"IT professional setups",d:"Clean desks, cable trays, a good chair and soft light.",p:"office",s:0,n:5},
+  {t:"Dual monitor desks",d:"1500 × 650 mm minimum, monitor arms and a keyboard shelf.",p:"office",s:5,n:5},
+  {t:"Compact workstations",d:"Fold-down, wall-mounted and wardrobe-integrated desks.",p:"office",s:10,n:5},
+  {t:"Productivity spaces",d:"Daylight from the side, plants nearby, and a door or screen for call privacy.",p:"office",s:15,n:5}
+ ]},
+
+{id:"balcony", title:"Balcony and utility ideas",
+ intro:"Your free-air room. Plant-friendly, weather-tough and capable of absorbing laundry without looking like it.",
+ groups:[
+  {t:"Balcony gardens",d:"Hardy choices: money plant, snake plant, curry leaf, jasmine, tulsi, aloe.",p:"outdoor",s:4,n:7},
+  {t:"Reading corners",d:"A cushioned bench, a side table and a breezy view.",p:"outdoor",s:11,n:7},
+  {t:"Laundry solutions",d:"Pull-down drying racks, a washer enclosure and a hidden utility cabinet.",p:"living",s:36,n:6}
+ ]},
+
+{id:"storage", title:"Storage solutions",
+ intro:"Chennai flats are short on wall space and long on belongings. Treat storage as architecture, not an afterthought.",
+ groups:[
+  {t:"Wardrobes",d:"Floor-to-ceiling sliders, louvred shutters for airflow and loft cabinets above.",p:"bedroom",s:3,n:7},
+  {t:"Bed and under-floor storage",d:"Hydraulic beds and drawer plinths for linens and seasonal items.",p:"bedroom",s:18,n:5},
+  {t:"Entry, shoe and wall storage",d:"A slim shoe cabinet, key tray and bench at the door.",p:"living",s:25,n:4},
+  {t:"Kitchen pantry",d:"Tall pull-out larders, labelled jars and a monsoon-proof dry store.",p:"kitchen",s:16,n:4}
+ ]}
+];
+
+/* ---------- RENDER ---------- */
+const used = {};
+const ratios = ['r1','r4','r2','r3','r5','r4','r1','r3'];
+let rIdx = 0;
+const lbList = [];
+
+function pick(pool,start,n,sec){
+  const arr = POOL[pool]; const out=[]; const u = used[sec] = used[sec] || new Set();
+  for(let i=0;i<arr.length && out.length<n;i++){
+    const id = arr[(start+i)%arr.length];
+    if(!u.has(id)){u.add(id);out.push(id);}
+  }
+  return out;
+}
+
+function tiles(ids,alt){
+  return ids.map(id=>{
+    const r = ratios[(rIdx++)%ratios.length];
+    return `<button class="tile ${r}" data-full="${UL(id)}" aria-label="Open image: ${alt}"><img loading="lazy" decoding="async" src="${U(id)}" alt="${alt}"></button>`;
+  }).join('');
+}
+
+const main = document.getElementById('main');
+const navlist = document.getElementById('navlist');
+
+// Cover
+main.innerHTML = `
+<header class="cover" id="cover">
+  <img src="${UL('1618221195710-dd6b41faaea6')}" alt="Warm modern living room with oak and sage tones">
+  <div class="txt">
+    <h1>Warm Homes for Chennai Families</h1>
+    <p class="vision">A mood board inspiration book for IT families in 1, 2 and 3 BHK apartments. Light, breathable, low-maintenance homes where work, family and festivals all fit.</p>
+    <p class="meta">Design vision: modern, warm and natural, with spaces that cope with Chennai's heat, humidity and monsoon. Prepared for client review.</p>
+  </div>
+  <div class="strip" aria-hidden="true">
+    <span style="background:#FAF6EF"></span><span style="background:#E6D9C3"></span><span style="background:#B58853"></span><span style="background:#97AB84"></span><span style="background:#C0623B"></span><span style="background:#34322E"></span>
+  </div>
+</header>`;
+navlist.innerHTML = `<li><a href="#cover">Cover</a></li>`;
+
+SECTIONS.forEach(S=>{
+  let h = `<section id="${S.id}"><div class="sec-head"><h2>${S.title}</h2><p>${S.intro}</p></div>`;
+  if(S.cards) h += `<div class="cards">${S.cards.map(c=>`<div class="card"><h4>${c.h}</h4><p>${c.p}</p></div>`).join('')}</div>`;
+  if(S.kw) h += `<div class="kw-intro">${S.kw.map((c,i)=>`<div class="card ${i%3==2?'dark':''}"><h4>${c.h}</h4><p>${c.p}</p></div>`).join('')}</div>`;
+  if(S.swatches) h += `<div class="swatches">${S.swatches.map(s=>`<div class="sw" style="background:${s.c};color:${s.dark?'#34322E':'#fff'}"><b>${s.n}</b>${s.c}<br><span>${s.u}</span></div>`).join('')}</div>`;
+  S.groups.forEach(g=>{
+    const ids = pick(g.p,g.s,g.n,S.id);
+    h += `<div class="group"><h3>${g.t}</h3>${g.d?`<p class="note">${g.d}</p>`:''}<div class="masonry">${tiles(ids,g.t+' inspiration')}</div></div>`;
+  });
+  h += `</section>`;
+  main.insertAdjacentHTML('beforeend',h);
+  navlist.insertAdjacentHTML('beforeend',`<li><a href="#${S.id}">${S.title}</a></li>`);
+});
+
+main.insertAdjacentHTML('beforeend',`<div class="cta"><h2>Next step</h2><p>Tell us your flat size, family size and work-from-home days. We will turn the boards you like into a room-by-room layout, material schedule and budget.</p><p style="margin-top:14px">Images are for inspiration and mood only. Final materials, finishes and furniture will be specified during design development.</p></div>`);
+
+/* ---------- Broken image handling: remove tile so grid stays clean ---------- */
+document.querySelectorAll('.tile img').forEach(img=>{
+  img.addEventListener('error',()=>{
+    const t=img.closest('.tile'); if(t) t.remove();
+    refreshLB();
+  },{once:true});
+});
+document.querySelectorAll('.cover>img').forEach(img=>img.addEventListener('error',()=>{
+  img.style.display='none';
+  document.querySelector('.cover').style.background='linear-gradient(135deg,#8a6a45,#34322E)';
+}));
+
+/* ---------- Lightbox ---------- */
+const lb=document.getElementById('lb'), lbImg=lb.querySelector('img');
+let cur=0, items=[];
+function refreshLB(){ items=[...document.querySelectorAll('.tile')]; }
+refreshLB();
+function show(i){cur=(i+items.length)%items.length;lbImg.src=items[cur].dataset.full;lbImg.alt=items[cur].querySelector('img').alt;}
+document.addEventListener('click',e=>{
+  const t=e.target.closest('.tile');
+  if(t){refreshLB();show(items.indexOf(t));lb.classList.add('open');lb.querySelector('.x').focus();}
+});
+lb.querySelector('.x').onclick=()=>lb.classList.remove('open');
+lb.querySelector('.p').onclick=()=>show(cur-1);
+lb.querySelector('.n').onclick=()=>show(cur+1);
+lb.addEventListener('click',e=>{if(e.target===lb)lb.classList.remove('open')});
+document.addEventListener('keydown',e=>{
+  if(!lb.classList.contains('open'))return;
+  if(e.key==='Escape')lb.classList.remove('open');
+  if(e.key==='ArrowLeft')show(cur-1);
+  if(e.key==='ArrowRight')show(cur+1);
+});
+
+/* ---------- Nav highlight ---------- */
+const links=[...document.querySelectorAll('nav.index a')];
+const io=new IntersectionObserver(es=>{
+  es.forEach(en=>{ if(en.isIntersecting){ links.forEach(l=>l.classList.toggle('on',l.getAttribute('href')==='#'+en.target.id)); }});
+},{rootMargin:'-30% 0px -60% 0px'});
+document.querySelectorAll('header.cover,section').forEach(s=>io.observe(s));
+</script>
+</body>
+</html>
