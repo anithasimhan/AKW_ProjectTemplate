@@ -1,387 +1,630 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Warm Homes, Chennai Families — Mood Board Inspiration Book</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Meera Raghavan, Architect</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --warm-white:#FAF6EF; --beige:#E6D9C3; --oak:#B58853; --sage:#97AB84; --terracotta:#C0623B; --charcoal:#34322E;
-  --ink:#34322E; --muted:#6F6A60; --line:#E3D8C5;
-  --serif:'Fraunces',Georgia,serif; --sans:'Figtree',system-ui,sans-serif;
+  --paper:#ECEDEE; --white:#FAFAFA; --concrete:#D2D4D6; --graphite:#5A5E62; --ink:#1F2123;
+  --surface:#CBCDCF;
+  --tower-h:min(78vh,720px); --tower-w:calc(var(--tower-h) / 6); --gutter:calc(var(--tower-w) + 5px);
+  --photo:none;            /* delete this value to show photos in colour */
+  --ease:cubic-bezier(.7,0,.2,1);
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --text:"Source Serif 4",Georgia,serif;
 }
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:var(--sans);background:var(--warm-white);color:var(--ink);line-height:1.6;font-size:16px}
-img{display:block;max-width:100%}
+@media (max-width:820px){:root{--tower-h:min(52vh,420px);--gutter:calc(var(--tower-w) + 30px)}}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scrollbar-gutter:stable}
+html.locked{overflow:hidden}
+body{background:var(--paper);color:var(--ink);font:400 1.0625rem/1.6 var(--text);padding-right:var(--gutter);-webkit-font-smoothing:antialiased}
 a{color:inherit}
-:focus-visible{outline:3px solid var(--terracotta);outline-offset:3px}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--ink);color:var(--paper);padding:8px 14px;z-index:200;font-family:var(--display)}
+.skip:focus{left:8px}
 
-/* layout: sticky side index + content */
-.shell{display:grid;grid-template-columns:240px 1fr;min-height:100vh}
-nav.index{position:sticky;top:0;height:100vh;overflow:auto;padding:32px 24px;border-right:1px solid var(--line);background:var(--warm-white)}
-nav.index .brand{font-family:var(--serif);font-size:20px;line-height:1.25;margin-bottom:24px}
-nav.index ol{list-style:none}
-nav.index a{display:block;padding:6px 0;text-decoration:none;color:var(--muted);font-size:14px;border-left:2px solid transparent;padding-left:12px;margin-left:-12px}
-nav.index a:hover,nav.index a.on{color:var(--charcoal);border-left-color:var(--terracotta)}
-main{min-width:0}
+/* ---------- tower that builds with scroll ---------- */
+.tower{position:fixed;right:14px;bottom:44px;z-index:20;pointer-events:none}
+.tower svg{display:block;height:var(--tower-h);width:var(--tower-w);overflow:visible}
+.tower p{position:fixed;right:14px;bottom:14px;text-align:right;font:500 .75rem/1.2 var(--display);white-space:nowrap}
+.t-ground{stroke:var(--ink);stroke-width:1.6}
+.t-hair{stroke:var(--graphite);stroke-width:.6}
+.t-slab{fill:var(--white);stroke:var(--ink);stroke-width:1}
+.t-win{fill:var(--ink)} .t-win.lt{fill:var(--concrete)}
+.t-crane{stroke:var(--graphite);fill:none;stroke-width:.9}
+.t-crane-solid{fill:var(--graphite)}
+.fl{transform-box:fill-box;transform-origin:50% 100%;transform:scaleY(0);opacity:0;transition:transform .55s cubic-bezier(.2,.8,.2,1),opacity .2s}
+.fl.on{transform:none;opacity:1}
+#jib{transition:transform .7s var(--ease)}
+#crane{transition:opacity .5s}
+#crane.gone{opacity:0}
 
-/* cover */
-.cover{position:relative;min-height:92vh;display:flex;align-items:flex-end;color:#fff;background:#6b5a46}
-.cover>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.cover::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(30,26,20,.82) 0%,rgba(30,26,20,.35) 55%,rgba(30,26,20,.1) 100%)}
-.cover .txt{position:relative;z-index:2;padding:64px clamp(24px,5vw,72px);max-width:880px}
-.cover h1{font-family:var(--serif);font-weight:400;font-size:clamp(40px,6.5vw,88px);line-height:1.02;letter-spacing:-.02em}
-.cover p.vision{margin-top:24px;font-size:clamp(17px,1.6vw,21px);max-width:640px;color:#f3eadb}
-.cover .meta{margin-top:28px;font-size:14px;color:#e0d3bd}
-.cover .strip{position:relative;z-index:2;display:flex;gap:10px;padding:0 clamp(24px,5vw,72px) 40px}
-.cover .strip span{width:44px;height:44px;border-radius:50%;border:2px solid rgba(255,255,255,.7)}
+/* ---------- hero ---------- */
+.hero{min-height:100svh;display:grid;grid-template-rows:auto 1fr;padding:28px clamp(20px,4vw,56px) 56px}
+.topbar{display:flex;justify-content:space-between;gap:24px;font:500 .9375rem var(--display)}
+.topbar nav{display:flex;gap:clamp(16px,3vw,32px)}
+.topbar a{text-decoration:none;border-bottom:1px solid transparent}
+.topbar a:hover{border-color:currentColor}
+.hero-body{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:clamp(24px,4vw,64px);align-items:end;padding-top:48px}
+h1{font:800 clamp(2rem,6vw,7rem)/.94 var(--display);font-stretch:125%;letter-spacing:-.03em}
+.ln{display:block;overflow:hidden;padding-bottom:.1em;margin-bottom:-.1em}
+.ln>span{display:block;transform:translateY(106%);animation:rise 1s var(--ease) forwards}
+.ln:nth-child(2)>span{animation-delay:.14s}
+@keyframes rise{to{transform:none}}
+.intro{max-width:30em;margin-top:clamp(28px,5vh,56px);font-size:1.1875rem}
+.hero-fig{display:block;width:100%;background:none;border:0;padding:0;cursor:pointer;text-align:left}
+.hero-fig .frame{display:block;aspect-ratio:4/5;overflow:hidden;background:var(--concrete);clip-path:inset(100% 0 0 0);animation:unveil 1.1s .35s var(--ease) forwards}
+.hero-fig img{width:100%;height:100%;object-fit:cover;filter:var(--photo);display:block;transition:transform .8s var(--ease)}
+.hero-fig:hover img{transform:scale(1.04)}
+.hero-fig figcaption{display:block;margin-top:10px;font:500 .875rem var(--display);color:var(--graphite)}
+@keyframes unveil{to{clip-path:inset(0 0 0 0)}}
 
-section{padding:88px clamp(24px,5vw,72px) 24px;border-top:1px solid var(--line)}
-section:first-of-type{border-top:0}
-.sec-head{max-width:760px;margin-bottom:40px}
-.sec-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(30px,4vw,52px);line-height:1.1;letter-spacing:-.015em}
-.sec-head p{margin-top:14px;color:var(--muted);font-size:17px}
+/* ---------- sections ---------- */
+.section{padding:clamp(72px,12vh,140px) clamp(20px,4vw,56px)}
+h2{font:700 clamp(2rem,5vw,4.25rem)/1 var(--display);font-stretch:125%;letter-spacing:-.02em}
+.lede{max-width:36em;margin-top:18px;color:var(--graphite)}
 
-.group{margin-bottom:56px}
-.group h3{font-family:var(--serif);font-weight:600;font-size:22px;margin-bottom:4px}
-.group .note{color:var(--muted);font-size:15px;max-width:720px;margin-bottom:18px}
-
-/* Pinterest masonry */
-.masonry{columns:4 220px;column-gap:14px}
-.tile{break-inside:avoid;margin-bottom:14px;border-radius:10px;overflow:hidden;background:var(--beige);cursor:zoom-in;position:relative;border:0;display:block;width:100%;padding:0}
-.tile img{width:100%;height:auto;transition:transform .5s ease;background:var(--beige);min-height:120px}
-.tile:hover img{transform:scale(1.04)}
-.tile.r1 img{aspect-ratio:3/4;object-fit:cover}
-.tile.r2 img{aspect-ratio:4/5;object-fit:cover}
-.tile.r3 img{aspect-ratio:1/1;object-fit:cover}
-.tile.r4 img{aspect-ratio:4/3;object-fit:cover}
-.tile.r5 img{aspect-ratio:2/3;object-fit:cover}
-
-/* text cards */
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;margin-bottom:56px}
-.card{background:#fff;border:1px solid var(--line);border-radius:6px;padding:26px}
-.card h4{font-family:var(--serif);font-weight:600;font-size:19px;margin-bottom:8px}
-.card p,.card li{font-size:15px;color:#524e46}
-.card ul{padding-left:18px}
-.card.dark{background:var(--charcoal);border-color:var(--charcoal)}
-.card.dark h4{color:#fff}.card.dark p,.card.dark li{color:#ddd3c1}
-
-/* palette */
-.swatches{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0;margin-bottom:56px;border-radius:8px;overflow:hidden;border:1px solid var(--line)}
-.sw{padding:80px 16px 16px;font-size:14px}
-.sw b{display:block;font-family:var(--serif);font-size:18px;font-weight:600}
-
-/* kw */
-.kw-intro{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-bottom:56px}
-
-.cta{margin:72px clamp(24px,5vw,72px) 0;padding:48px 0 72px;border-top:1px solid var(--line);color:var(--muted);font-size:14px;max-width:820px}
-.cta h2{font-family:var(--serif);font-weight:400;font-size:30px;color:var(--ink);margin-bottom:10px}
-
-/* lightbox */
-#lb{position:fixed;inset:0;background:rgba(24,21,17,.92);display:none;align-items:center;justify-content:center;z-index:50;padding:24px}
-#lb.open{display:flex}
-#lb img{max-height:90vh;max-width:92vw;border-radius:6px;object-fit:contain}
-#lb button{position:absolute;background:rgba(255,255,255,.14);color:#fff;border:0;width:48px;height:48px;border-radius:50%;font-size:24px;cursor:pointer}
-#lb button:hover{background:rgba(255,255,255,.3)}
-#lb .x{top:20px;right:20px}#lb .p{left:20px;top:50%}#lb .n{right:20px;top:50%}
-
-#mobtop{display:none}
-@media(max-width:900px){
-  .shell{grid-template-columns:1fr}
-  nav.index{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line);padding:20px 24px}
-  nav.index ol{display:flex;gap:6px 16px;flex-wrap:wrap}
-  nav.index a{border-left:0;margin:0;padding:2px 0}
-  section{padding-top:64px}
-  .masonry{columns:2 150px;column-gap:10px}
-  .tile{margin-bottom:10px}
+/* skyline */
+.skyline{display:flex;align-items:flex-end;gap:clamp(6px,1vw,14px);height:clamp(380px,66vh,640px);border-bottom:3px solid var(--ink);margin:56px 0 96px;list-style:none;padding:0}
+.bldg{position:relative;height:100%;display:flex;align-items:flex-end;flex:var(--g) 1 0;min-width:0;transition:flex-grow .6s var(--ease),opacity .3s}
+.bldg:hover{flex-grow:calc(var(--g) * 1.5)}
+.skyline:hover .bldg:not(:hover){opacity:.5}
+.bldg button{display:block;width:100%;height:var(--h);border:0;padding:0;cursor:pointer;background:var(--concrete) var(--img) center/cover;filter:var(--photo);clip-path:var(--clip);transition:height .5s var(--ease)}
+.bldg:hover button{height:min(100%,calc(var(--h) + 5%))}
+.nm{position:absolute;top:calc(100% + 14px);left:0;right:0;font:600 .9375rem/1.25 var(--display);pointer-events:none}
+.nm small{display:block;font-weight:400;color:var(--graphite);margin-top:2px}
+.bldg:has(button:focus-visible) .nm{outline:2px solid var(--ink);outline-offset:4px}
+.bldg button:focus-visible{outline:none}
+@media (max-width:820px){
+  .nm{font-size:.7rem;overflow-wrap:anywhere}.nm small{display:none}
+  .skyline{margin-bottom:84px}
 }
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.tile img{transition:none}}
-@media print{nav.index,#lb{display:none}.shell{display:block}.tile{cursor:default}section{break-before:page}}
+
+/* project sheet */
+.fx{position:fixed;z-index:90;background-size:cover;background-position:center;filter:var(--photo);transition:left .85s var(--ease),top .85s var(--ease),width .85s var(--ease),height .85s var(--ease),clip-path .85s var(--ease)}
+.sheet{position:fixed;inset:0;z-index:100;display:grid;grid-template-columns:minmax(340px,5fr) 7fr;visibility:hidden;overflow:hidden}
+.sheet.open{visibility:visible}
+.sheet-info{background:var(--paper);overflow-y:auto;padding:clamp(24px,4vw,56px);display:flex;flex-direction:column;gap:28px;transform:translateX(-102%);transition:transform .6s var(--ease)}
+.sheet.in .sheet-info{transform:none}
+.sheet-gallery{position:relative;background:var(--ink);overflow:hidden}
+.slides{display:flex;height:100%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.slides::-webkit-scrollbar{display:none}
+.slide{position:relative;flex:0 0 100%;height:100%;scroll-snap-align:start}
+.slide img{width:100%;height:100%;object-fit:contain;filter:var(--photo);display:block}
+.slide figcaption{position:absolute;left:0;right:0;bottom:0;padding:64px 24px 24px;color:#fff;font:500 .9375rem var(--display);background:linear-gradient(to top,rgba(0,0,0,.55),transparent)}
+.gctl{position:absolute;right:20px;bottom:18px;display:flex;align-items:center;gap:10px;color:#fff;font:500 .875rem var(--display)}
+.gctl button{width:44px;height:44px;background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.7);color:#fff;cursor:pointer;display:grid;place-items:center}
+.gctl button:hover{background:#fff;color:var(--ink)}
+.gctl button:focus-visible{outline-color:#fff}
+.close{align-self:flex-start;font:600 .9375rem var(--display);background:none;border:1px solid var(--ink);padding:9px 16px;cursor:pointer}
+.close:hover{background:var(--ink);color:var(--paper)}
+.sheet h3{font:700 clamp(2rem,3.6vw,3.25rem)/1 var(--display);font-stretch:125%;letter-spacing:-.02em}
+.facts{display:grid;grid-template-columns:1fr 1fr;border-top:2px solid var(--ink)}
+.facts div{padding:12px 12px 12px 0;border-bottom:1px solid var(--concrete)}
+.facts dt{font:500 .8125rem var(--display);color:var(--graphite)}
+.facts dd{font:600 1rem var(--display)}
+.prose p{margin-bottom:1em;max-width:34em}
+.pn{margin-top:auto;display:flex;justify-content:space-between;gap:16px;border-top:1px solid var(--ink);padding-top:16px}
+.pn button{background:none;border:0;cursor:pointer;text-align:left;font:600 .9375rem/1.3 var(--display);padding:4px 0}
+.pn button:last-child{text-align:right}
+.pn button:hover{text-decoration:underline;text-underline-offset:4px}
+.pn small{display:block;font-weight:400;color:var(--graphite)}
+@media (max-width:820px){
+  .sheet{grid-template-columns:1fr;grid-template-rows:52svh 1fr}
+  .sheet-gallery{order:-1}
+  .sheet-info{transform:translateY(100%)}
+}
+
+/* ---------- the desk ---------- */
+.desk{position:relative;margin-top:48px;aspect-ratio:16/10;min-height:560px;overflow:hidden;border:1px solid #AEB1B4;
+  background-color:var(--surface);
+  background-image:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/><feColorMatrix type='saturate' values='0'/></filter><rect width='300' height='300' filter='url(%23n)' opacity='.16'/></svg>"),
+    linear-gradient(rgba(0,0,0,.07) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,0,0,.07) 1px,transparent 1px);
+  background-size:300px 300px,48px 48px,48px 48px}
+.obj{position:absolute;left:var(--x);top:var(--y);width:var(--w);transform:rotate(var(--r));background:none;border:0;padding:0;cursor:pointer;
+  filter:drop-shadow(0 6px 8px rgba(0,0,0,.28));transition:transform .4s var(--ease),filter .4s}
+.obj svg{display:block;width:100%;height:auto;overflow:visible}
+.obj:hover,.obj:focus-visible,.obj.active{transform:translateY(-9px) rotate(calc(var(--r) + 1.5deg)) scale(1.025);filter:drop-shadow(0 20px 18px rgba(0,0,0,.3));z-index:3}
+.deco{position:absolute;pointer-events:none}
+.note{position:absolute;z-index:6;width:min(330px,44%);background:var(--white);padding:20px 22px 14px;box-shadow:0 22px 44px rgba(0,0,0,.28);opacity:0;visibility:hidden;transform:translateY(10px) rotate(-1.2deg);pointer-events:none;transition:opacity .25s,transform .4s var(--ease),visibility 0s .25s}
+.note.show{opacity:1;visibility:visible;transform:rotate(-1.2deg);transition:opacity .25s,transform .4s var(--ease),visibility 0s}
+.note h3{font:700 1.25rem/1.1 var(--display);font-stretch:115%;margin-bottom:10px}
+.note ul{list-style:none;padding:0}
+.note li{border-top:1px solid var(--concrete);padding:9px 0;font-size:.9375rem;line-height:1.4}
+.note li b{display:block;font:600 .9375rem var(--display)}
+.note p{font-size:.9375rem;line-height:1.5;padding-bottom:8px}
+.note a{pointer-events:auto}
+@media (max-width:820px){
+  .desk{aspect-ratio:auto;min-height:0;display:grid;grid-template-columns:1fr 1fr;gap:34px 22px;padding:28px 22px;align-items:center}
+  .obj{position:static;transform:none;width:100%}
+  .obj.wide{grid-column:1/-1}
+  .obj:hover,.obj:focus-visible,.obj.active{transform:translateY(-4px)}
+  .deco{display:none}
+  .note{position:static;display:none;width:auto;grid-column:1/-1;transform:none}
+  .note.show{display:block;position:sticky;bottom:12px;order:99}
+}
+
+/* ---------- contact ---------- */
+.contact{border-top:3px solid var(--ink);margin-top:clamp(40px,8vh,100px)}
+.mail{display:inline-block;margin-top:28px;font:700 clamp(1.4rem,4.4vw,3.6rem)/1.1 var(--display);font-stretch:112%;letter-spacing:-.02em;overflow-wrap:anywhere}
+.mail:hover{text-decoration-thickness:3px;text-underline-offset:8px}
+.links{display:flex;flex-wrap:wrap;gap:8px 28px;margin-top:28px;font:500 1rem var(--display)}
+footer{padding:0 clamp(20px,4vw,56px) 40px;color:var(--graphite);font:400 .875rem var(--display)}
+
+@media (max-width:820px){
+  .hero-body{grid-template-columns:1fr}
+  .hero-fig{max-width:340px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important;animation-delay:0s!important}
+  html{scroll-behavior:auto}
+}
+.tower p{display:none}
 </style>
 </head>
 <body>
-<div class="shell">
-<nav class="index" aria-label="Sections">
-  <div class="brand">Warm Homes<br>for Chennai Families</div>
-  <ol id="navlist"></ol>
-</nav>
-<main id="main"></main>
-</div>
+<a class="skip" href="#work">Skip to projects</a>
 
-<div id="lb" role="dialog" aria-label="Image viewer" aria-modal="true">
-  <button class="x" aria-label="Close">×</button>
-  <button class="p" aria-label="Previous">‹</button>
-  <img alt="">
-  <button class="n" aria-label="Next">›</button>
+<aside class="tower" aria-hidden="true">
+  <svg id="towerSvg" viewBox="0 0 100 600" preserveAspectRatio="xMidYMax meet"></svg>
+  <p id="towerLabel">Floor 1 of 14</p>
+</aside>
+
+<header class="hero" id="top">
+  <div class="topbar">
+    <span>Aravinthan Karunanidhi</span>
+    <nav aria-label="Sections"><a href="#work">Work</a><a href="#desk">The desk</a><a href="#contact">Contact</a></nav>
+  </div>
+  <div class="hero-body">
+    <div>
+      <h1><span class="ln"><span>Aravinthan</span></span><span class="ln"><span>Karunanidhi</span></span></h1>
+      <p class="intro">Licensed Architect with 10+ years of experience in architecture and interior design. Founder and Principal Architect at AK Workroom since 2020, specializing in residential, commercial, and industrial projects from concept to execution.</p>
+    </div>
+  
+    <div class="hero-fig" id="heroFig" style="cursor:default">
+  <span class="frame"><img id="heroImg" src="Aravinthan.png" alt="Portrait of Meera Raghavan" style="object-position:center top;filter:none"></span>
+
+</div>
+  </div>
+</header>
+
+<main>
+  <section class="section" id="work" aria-labelledby="work-h">
+    <h2 id="work-h">Selected work</h2>
+    <p class="lede">Five buildings from eleven years of practice. Select one to step inside.</p>
+    <ul class="skyline" id="skyline"></ul>
+  </section>
+
+  <section class="section" id="desk" aria-labelledby="desk-h">
+    <h2 id="desk-h">The architect's desk</h2>
+    <p class="lede">Everything I work with is on this table. Hover over an object, or tap it on a touch screen, to read more.</p>
+
+    <div class="desk" id="deskEl">
+      <!-- coffee cup (decoration) -->
+      <div class="deco" style="left:49%;top:11%;width:11%" aria-hidden="true">
+        <svg viewBox="0 0 120 100" style="filter:drop-shadow(0 5px 6px rgba(0,0,0,.25))">
+          <circle cx="52" cy="50" r="46" fill="#f4f4f3" stroke="#c2c4c6"/>
+          <circle cx="52" cy="50" r="33" fill="#fafafa" stroke="#d0d2d4"/>
+          <circle cx="52" cy="50" r="26" fill="#3b3d3f"/>
+          <path d="M88 38h16a10 10 0 0 1 0 24H88" fill="none" stroke="#f4f4f3" stroke-width="9"/>
+        </svg>
+      </div>
+
+      <!-- sketchbook -->
+      <button class="obj" data-note="sketchbook" aria-label="Sketchbook: experience" style="--x:5%;--y:9%;--w:40%;--r:-3deg">
+        <svg viewBox="0 0 420 300" aria-hidden="true">
+          <defs>
+            <linearGradient id="sbL" x1="0" x2="1"><stop offset=".8" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".17"/></linearGradient>
+            <linearGradient id="sbR" x1="1" x2="0"><stop offset=".8" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".17"/></linearGradient>
+          </defs>
+          <rect x="4" y="4" width="412" height="292" rx="5" fill="#2b2d2f"/>
+          <rect x="14" y="12" width="194" height="276" fill="#f6f6f5"/><rect x="14" y="12" width="194" height="276" fill="url(#sbL)"/>
+          <rect x="212" y="12" width="194" height="276" fill="#fafaf9"/><rect x="212" y="12" width="194" height="276" fill="url(#sbR)"/>
+          <g fill="none" stroke="#222" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke-width="3" d="M36 48h136v104H36z"/>
+            <path stroke-width="2.4" d="M36 100h66M102 48v52M102 100v52M136 152v-30h36"/>
+            <path stroke-width="1" d="M102 120a16 16 0 0 1 16-16M136 122a14 14 0 0 0-14 14"/>
+            <path stroke-width="1" d="M36 172h136M36 167v10M172 167v10M104 167v10"/>
+            <path stroke-width="1.2" opacity=".7" d="M36 200q8-5 16 0t16 0t16 0t16 0t16 0t16 0M36 218q8-5 16 0t16 0t16 0t16 0M36 236q8-5 16 0t16 0t16 0t16 0t16 0t16 0t16 0M36 254q8-5 16 0t16 0t16 0"/>
+            <path stroke-width="2.4" d="M232 170h156"/>
+            <path stroke-width="2.2" d="M254 170V92h44V62h52v108M254 130h44M298 110h52M254 150h96M312 62v-12"/>
+            <path stroke-width="1" opacity=".7" d="M236 174l-8 9M248 174l-8 9M260 174l-8 9M272 174l-8 9M284 174l-8 9M296 174l-8 9M308 174l-8 9M320 174l-8 9M332 174l-8 9M344 174l-8 9M356 174l-8 9M368 174l-8 9M380 174l-8 9"/>
+            <path stroke-width="1.2" opacity=".7" d="M232 206q8-5 16 0t16 0t16 0t16 0t16 0t16 0t16 0M232 224q8-5 16 0t16 0t16 0t16 0"/>
+            <circle cx="350" cy="250" r="20" stroke="#9c9fa2" stroke-width="3" opacity=".55"/>
+            <circle cx="351" cy="251" r="17" stroke="#b3b5b8" stroke-width="1.5" opacity=".5"/>
+          </g>
+          <rect x="396" y="4" width="8" height="292" fill="#3c3f41"/>
+        </svg>
+      </button>
+
+      <!-- material samples -->
+      <button class="obj" data-note="samples" aria-label="Material samples: certifications" style="--x:70%;--y:7%;--w:24%;--r:6deg">
+        <svg viewBox="0 0 320 300" aria-hidden="true">
+          <defs>
+            <filter id="msGrain"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="3"/><feColorMatrix type="saturate" values="0"/></filter>
+            <pattern id="msPerf" width="12" height="12" patternUnits="userSpaceOnUse"><circle cx="6" cy="6" r="3" fill="#2a2c2e"/></pattern>
+            <pattern id="msRib" width="8" height="130" patternUnits="userSpaceOnUse"><rect width="4" height="130" fill="#fff" opacity=".6"/><rect x="4" width="4" height="130" fill="#8f9498" opacity=".35"/></pattern>
+          </defs>
+          <g transform="translate(14 12) rotate(-6 65 65)"><rect width="130" height="130" fill="#b2b5b8" stroke="#74787b" stroke-width=".8"/><rect width="130" height="130" filter="url(#msGrain)" opacity=".4" style="mix-blend-mode:multiply"/><circle cx="110" cy="20" r="4" fill="#6f7377"/></g>
+          <g transform="translate(160 26) rotate(5 65 65)"><rect width="130" height="130" fill="#dededc" stroke="#74787b" stroke-width=".8"/><g id="terrChips"></g></g>
+          <g transform="translate(30 152) rotate(3 65 65)"><rect width="130" height="130" fill="#a4a8ab" stroke="#74787b" stroke-width=".8"/><rect x="4" y="4" width="122" height="122" fill="url(#msPerf)"/></g>
+          <g transform="translate(166 160) rotate(-4 65 65)"><rect width="130" height="130" fill="#e4e6e7" stroke="#74787b" stroke-width=".8"/><rect width="130" height="130" fill="url(#msRib)"/></g>
+        </svg>
+      </button>
+
+      <!-- camera -->
+      <button class="obj" data-note="camera" aria-label="Camera: get in touch" style="--x:60%;--y:56%;--w:28%;--r:-7deg">
+        <svg viewBox="0 0 360 220" aria-hidden="true">
+          <defs><linearGradient id="camSilver" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#eceded"/><stop offset="1" stop-color="#b9bbbd"/></linearGradient></defs>
+          <rect x="130" y="8" width="100" height="62" rx="6" fill="#26282a"/>
+          <path stroke="#4a4d50" stroke-width="2" d="M138 16v46M146 16v46M154 16v46M162 16v46M170 16v46M178 16v46M186 16v46M194 16v46M202 16v46M210 16v46M218 16v46"/>
+          <rect x="8" y="62" width="344" height="150" rx="14" fill="#2b2d2f"/>
+          <rect x="14" y="66" width="332" height="86" rx="6" fill="url(#camSilver)" stroke="#8d9093"/>
+          <rect x="44" y="80" width="64" height="24" rx="2" fill="#55595c" stroke="#2b2d2f"/>
+          <rect x="52" y="86" width="22" height="12" fill="#7d8286"/>
+          <rect x="150" y="76" width="60" height="10" fill="#6a6e72"/>
+          <rect x="168" y="90" width="24" height="14" rx="1" fill="#2b2d2f"/>
+          <circle cx="278" cy="108" r="26" fill="#d4d6d8" stroke="#6a6e72" stroke-width="1.5"/>
+          <circle cx="278" cy="108" r="18" fill="#bfc1c3" stroke="#6a6e72"/>
+          <path stroke="#4a4d50" stroke-width="1.5" d="M278 84v8M278 124v8M254 108h8M294 108h8M261 91l5 5M295 125l5 5M261 125l5-5M295 91l5-5"/>
+          <circle cx="322" cy="84" r="9" fill="#2b2d2f"/><circle cx="322" cy="84" r="5" fill="#5a5e62"/>
+          <rect x="0" y="86" width="10" height="26" rx="2" fill="#7d8286"/><rect x="350" y="86" width="10" height="26" rx="2" fill="#7d8286"/>
+          <path d="M5 98C-6 130-6 170 12 190M355 98c11 32 11 72-7 92" fill="none" stroke="#3c3f41" stroke-width="7" stroke-linecap="round"/>
+        </svg>
+      </button>
+
+      <!-- pencil -->
+      <button class="obj" data-note="pencil" aria-label="Pencil: design philosophy" style="--x:26%;--y:64%;--w:32%;--r:-18deg">
+        <svg viewBox="0 0 600 40" aria-hidden="true">
+          <rect x="70" y="3" width="450" height="12" fill="#e2e2e0"/>
+          <rect x="70" y="15" width="450" height="12" fill="#bdbdbb"/>
+          <rect x="70" y="27" width="450" height="10" fill="#8e8e8c"/>
+          <polygon points="70,3 16,16 16,24 70,37" fill="#cfcfcb"/>
+          <polygon points="16,16 3,19.4 3,20.6 16,24" fill="#2b2d2f"/>
+          <rect x="520" y="3" width="42" height="34" fill="#b7b9bb"/>
+          <path stroke="#7d8286" stroke-width="1.5" d="M530 3v34M540 3v34M550 3v34"/>
+          <rect x="562" y="5" width="32" height="30" rx="6" fill="#d9d9d7" stroke="#a8a8a6"/>
+        </svg>
+      </button>
+
+      <!-- scale ruler -->
+      <button class="obj wide" data-note="ruler" aria-label="Scale ruler: education" style="--x:5%;--y:80%;--w:52%;--r:-1.5deg">
+        <svg viewBox="0 0 800 80" aria-hidden="true">
+          <rect x="4" y="4" width="792" height="72" rx="3" fill="#f2f2f0" stroke="#9a9d9f"/>
+          <path d="M4 40h792" stroke="#b5b8ba" stroke-width="1"/>
+          <path id="rulerTop" fill="none" stroke="#2b2d2f" stroke-width=".9"/>
+          <path id="rulerBot" fill="none" stroke="#2b2d2f" stroke-width=".9"/>
+          <g id="rulerLabels" font-family="Archivo, Arial, sans-serif" font-size="10" fill="#2b2d2f"></g>
+          <text x="20" y="56" font-family="Archivo, Arial, sans-serif" font-size="9" fill="#5a5e62" opacity="0">1:100</text>
+        </svg>
+      </button>
+
+      <div class="note" id="note" role="status" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section class="section contact" id="contact" aria-labelledby="contact-h">
+    <h2 id="contact-h">Have a site in mind?</h2>
+    <a class="mail" href="mailto:hello@example.com">architectaravinthan@gmail.com </a>
+    <p class="links"><a href="#">Instagram</a><a href="#">LinkedIn</a><a href="#">Download portfolio (PDF)</a></p>
+  </section>
+</main>
+<footer>Aravinthan Karunanidhi, Chennai, India</footer>
+
+<!-- project sheet -->
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="shTitle">
+  <div class="sheet-info" id="shInfo">
+    <button class="close" id="shClose">Close</button>
+    <h3 id="shTitle"></h3>
+    <dl class="facts" id="shFacts"></dl>
+    <div class="prose" id="shProse"></div>
+    <div class="pn"><button id="shPrev"></button><button id="shNext"></button></div>
+  </div>
+  <div class="sheet-gallery" id="shGallery">
+    <div class="slides" id="shSlides" tabindex="0" aria-label="Project gallery"></div>
+    <div class="gctl">
+      <span id="shCount" aria-live="polite">1 / 4</span>
+      <button id="gPrev" aria-label="Previous image"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M11 3 5 9l6 6"/></svg></button>
+      <button id="gNext" aria-label="Next image"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m7 3 6 6-6 6"/></svg></button>
+    </div>
+  </div>
 </div>
 
 <script>
-/* ---------- IMAGE POOLS (Unsplash CDN ids) ---------- */
-const U = id => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=720&q=70`;
-const UL = id => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=1600&q=80`;
+/* =====================================================================
+   EDIT YOUR CONTENT HERE
+   - To use real photos, add `images: ["img/one.jpg","img/two.jpg",...]` to a project.
+     The first image is used on the skyline. Until then, grey drawings are generated.
+   ===================================================================== */
+const PROJECTS = [
+  { name:"Courtyard House", type:"Private residence", location:"Pondicherry", year:"2023", area:"3,200 sq ft", role:"Lead architect", status:"Completed",
+    clip:"0 10%, 50% 0, 100% 10%, 100% 100%, 50% 100%, 0 100%", h:"74%", g:1.2,
+images:["MD1.png","MD2.png","MD3.png","MD4.png","MD5.png"],pdf:"MD6.pdf",
+    text:["A family house organised around one open courtyard. Every room borrows light and air from it, so the house needs almost no mechanical cooling in a coastal climate.",
+          "Walls are lime-washed brick, floors are polished cement, and the roof overhangs by 1.8 m to keep monsoon rain off the verandah."],
+    gallery:[{cap:"Courtyard from the verandah",style:"courtyard",seed:1},{cap:"Street elevation",style:"stepped",seed:21},{cap:"Brick and lime detail",style:"louvers",seed:31},{cap:"Upper terrace",style:"fins",seed:41},{cap:"Fifth view",style:"fins",seed:46}] },
+  { name:"Marina Reading Room", type:"Public library", location:"Chennai", year:"2022", area:"14,500 sq ft", role:"Design architect", status:"Completed",
+    clip:"0 0, 35% 0, 35% 9%, 100% 9%, 100% 100%, 0 100%", h:"88%", g:1.6,
+    text:["A public reading room on the seafront. Horizontal concrete louvres cut the glare off the water and give the reading floor an even daylight.",
+          "The building is raised half a metre above the flood line and open to the street on three sides, so it works as a shaded public room as much as a library."],
+    gallery:[{cap:"Seafront elevation",style:"louvers",seed:2},{cap:"Reading floor",style:"courtyard",seed:22},{cap:"Louvre detail",style:"fins",seed:32},{cap:"Entrance steps",style:"stepped",seed:42}] },
+  { name:"Tidal Pavilion", type:"Cultural pavilion", location:"Mahabalipuram", year:"2021", area:"5,800 sq ft", role:"Lead architect", status:"Completed",
+    clip:"0 8%, 50% 4%, 100% 0, 100% 100%, 50% 100%, 0 100%", h:"58%", g:1,
+    text:["A row of vaulted arcades for a craft festival ground, built from locally quarried stone by local masons.",
+          "The arches carry the roof without steel. Between festivals the pavilion stays open as a covered market and a place to wait out the afternoon heat."],
+    gallery:[{cap:"The arcade at dusk",style:"arches",seed:3},{cap:"Approach from the road",style:"stepped",seed:23},{cap:"Stone coursing",style:"louvers",seed:33},{cap:"Inside the vault",style:"courtyard",seed:43}] },
+  { name:"Ridge Tower", type:"Mixed-use tower", location:"Bengaluru", year:"2024", area:"410,000 sq ft", role:"Design architect", status:"Under construction",
+    clip:"0 0, 50% 0, 100% 0, 100% 100%, 50% 100%, 0 100%", h:"100%", g:1.4,
+    text:["Twenty storeys of offices over a public podium. The section steps back as it rises, so every floor gets a terrace and the street stays in daylight.",
+          "The facade is a simple grid of deep reveals. The depth does the shading, which keeps glazing ratios low and the cooling load down."],
+    gallery:[{cap:"Tower from the ridge road",style:"grid",seed:4},{cap:"Podium and plaza",style:"stepped",seed:24},{cap:"Facade reveal",style:"fins",seed:34},{cap:"Lobby",style:"courtyard",seed:44}] },
+  { name:"Salt Works Studio", type:"Adaptive reuse", location:"Tuticorin", year:"2020", area:"9,000 sq ft", role:"Lead architect", status:"Completed",
+    clip:"0 14%, 50% 14%, 50% 0, 100% 0, 100% 100%, 0 100%", h:"68%", g:1.1,
+    text:["A disused salt warehouse turned into artists' studios. The steel frame stays; new walls are set back from it so the old structure reads clearly.",
+          "North-facing roof lights replace the old vents and give each studio steady light for painting and printing."],
+    gallery:[{cap:"The warehouse from the salt pans",style:"fins",seed:5},{cap:"Studio floor",style:"courtyard",seed:25},{cap:"Roof light detail",style:"louvers",seed:35},{cap:"Original steel frame",style:"grid",seed:45}] }
+];
+const FULL_CLIP = "0 0, 50% 0, 100% 0, 100% 100%, 50% 100%, 0 100%";
 
-const POOL = {
-living:[
-"1586023492125-27b2c045efd7","1583847268964-b28dc8f51f92","1618221195710-dd6b41faaea6","1618219908412-a29a1bb7b86e","1615529182904-14819c35db37","1631679706909-1844bbd07221","1493663284031-b7e3aefcae8e","1513694203232-719a280e022f","1567016432779-094069958ea5","1555041469-a586c61ea9bc","1567538096630-e0c55bd6374c","1600210492486-724fe5c67fb0","1600607687939-ce8a6c25118c","1600585154340-be6161a56a0c","1600566753190-17f0baa2a6c3","1600607688969-a5bfcd646154","1600210491892-03d54c0aaf87","1615874959474-d609969a20ed","1616486338812-3dadae4b4ace","1616047006789-b7af5afb8c20","1616137466211-f939a420be84","1617806118233-18e1de247200","1616593969747-4797dc75033e","1618220179428-22790b461013","1615873968403-89e068629265","1502672260266-1c1ef2d93688","1560448204-e02f11c3d0e2","1560185007-cde436f6a4d0","1600566752355-35792bedcfea","1600573472592-401b489a3cdc","1600607687644-c7171b42498f","1600585154084-4e5fe7c39198","1600047509807-ba8f99d2cdde","1600566753086-00f18fb6b3ea","1600121848594-d8644e57abab","1615875605825-5eb9bb5d52ac","1616627561950-9f746e330187","1522708323590-d24dbb6b0267","1484101403633-562f891dc89a","1505691938895-1758d7feb511"],
-kitchen:[
-"1556911220-bff31c812dba","1556909114-f6e7ad7d3136","1484154218962-a197022b5858","1556912172-45b7abe8b7e1","1565538810643-b5bdb714032a","1600489000022-c2086d79f9d4","1556909172-54557c7e4fb7","1556912167-f556f1f39fdf","1556910103-1c02745aae4d","1556909212-d5b604d0c90d","1556912998-c57cc6b63cd7","1600585152220-90363fe7e115","1597262975002-c5c3b14bbd62","1600566753051-f0b89df2dd90","1556909190-eccf4a8bf97a","1556909114-44e3e70034e2","1565183997392-2f6f122e5912","1600607687920-4e2a09cf159d","1600585153490-76fb20a32601","1600566753376-12c8ab7fb75b","1600585154526-990dced4db0d"],
-bedroom:[
-"1616594039964-ae9021a400a0","1505693416388-ac5ce068fe85","1522771739844-6a9f6d5f14af","1540518614846-7eded433c457","1560185893-a55cbc8c57e8","1512918728675-ed5a9ecdebfd","1615874694520-474822394e73","1595526114035-0d45ed16cfbf","1618220048045-10a6dbdf83e0","1560448075-cbc16bb4af8e","1598928506311-c55ded91a20c","1590490360182-c33d57733427","1556020685-ae41abfc9365","1631049307264-da0ec9d70304","1578683010236-d716f9a3f461","1600494603989-9650cf6ddd3d","1596178065887-1198b6148b2b","1566665797739-1674de7a421a","1571508601891-ca5e7a713859","1560185127-6ed189bf02f4","1617325247661-675ab4b64ae2","1586105251261-72a756497a11","1588854337236-6889d631faa8","1600121848594-d8644e57abab"],
-office:[
-"1593062096033-9a26b09da705","1518455027359-f3f8164ba6bd","1497366216548-37526070297c","1524758631624-e2822e304c36","1486946255434-2466348c2166","1498050108023-c5249f4df085","1517694712202-14dd9538aa97","1587614382346-4ec70e388b28","1527689368864-3a821dbccc34","1542744173-8e7e53415bb0","1600494448655-ae58f58bc1b5","1593642632559-0c6d3fc62b89","1555421689-d68471e189f2","1519389950473-47ba0277781c","1504384308090-c894fdcc538d","1497215728101-856f4ea42174","1531297484001-80022131f5a1","1461749280684-dccba630e2f6","1516321318423-f06f85e504b3","1550745165-9bc0b252726f","1499914485622-a88fac536970","1571624436279-b272aff752b5"],
-outdoor:[
-"1416879595882-3373a0480b5b","1459156212016-c812468e2115","1485955900006-10f4d324d411","1463320726281-696a485928c7","1558618666-fcd25c85cd64","1466692476868-aef1dfb1e735","1453928582365-b6ad33cbcdf2","1491147334573-44cbb4602074","1509423350716-97f9360b4e09","1598880940080-ff9a29891b85","1512428813834-c702c7702b78","1545241047-6083a3684587","1520412099551-62b6bafeb5bb","1599598425947-5202edd56bdb","1558904541-efa843a96f01","1470058869958-2a77ade41c02","1501004318641-b39e6451bec6","1604762524889-3e2fcc145683","1485909630830-8a5ceb1ecac1","1519710164239-da123dc03ef4"],
-texture:[
-"1581858726788-75bc0f6a952d","1523413651479-597eb2da0ad6","1558618047-3c8c76ca7d13","1533090161767-e6ffed986c88","1604147706283-d7119b5b822c","1618221381711-42ca8ab6e908","1589939705384-5185137a7f0f","1615971677499-5467cbab01c0","1503602642458-232111445657","1538688525198-9b88f6f53126","1586208958839-06c17cacdf08","1565182999561-18d7dc61c393","1506439773649-6e0eb8cfb237","1519974719765-e6559eac2575","1513519245088-0e12902e5a38","1532372320572-cda25653a26d","1600585152915-d208bec867a1","1600566752229-250ed79470f8","1600210492493-0946911123ea","1616486029423-aaa4789e8c9a"]
+const NOTES = {
+  sketchbook:{title:"Experience", html:`<ul>
+     <li><b>Principal Architect, AK Workroom</b>2020 to present, Chennai. Residential, commercial and industrial projects, end to end.</li>
+    <li><b>Branch Head, Siraj &amp; Renu</b>2018 to 2020, Chennai. Led architecture and interior projects and design teams.</li>
+    <li><b>Senior Architect, Pithavadian &amp; Partners</b>2013 to 2018, Chennai. Concept design, working drawings and authority submissions.</li></ul>`},
+  ruler:{title:"Education", html:`<ul>
+    <li><b>Bachelor of Architecture</b>School of Architecture, Chennai, 2006 to 2011.</li>
+       <li><b>Thesis: low-energy public buildings in the tropics</b>Distinction.</li>
+<li><b>Registered Architect</b>Council of Architecture, India.</li></ul>`},
+ samples:{title:"Skills", html:`<ul>
+    <li><b>Design</b>Concept design, working drawings, interior detailing.</li>
+    <li><b>Software</b>AutoCAD, Revit, SketchUp, Lumion, Photoshop.</li>
+    <li><b>Practice</b>Authority submissions, site supervision, client coordination.</li></ul>`},
+pencil:{title:"Design philosophy", html:`<p>A building should work for the people who use it, last for decades and be built the way it was drawn. I follow every project from concept to handover, so quality is never left to chance.</p><p>Whether it is a home, an office or a factory, the approach is the same: simple planning, honest materials and careful detailing.</p>`},
+  camera:{title:"Say hello", html:`<ul>
+    <li><b>Email</b><a href="mailto:hello@example.com">architectaravinthan@gmail.com </a></li>
+    <li><b>Phone</b>+91 99412 49016</li>
+    <li><b>AK Workroom</b>Chennai, Tamil Nadu, India. Visits by appointment.</li></ul>`}
 };
 
-/* ---------- CONTENT ---------- */
-/* g = group: t title, d note, p pool, s start index, n images */
-const SECTIONS = [
-
-{id:"lifestyle", title:"Chennai family lifestyle",
- intro:"Homes here work hard: hot, humid days, heavy monsoon weeks, long commutes along OMR and GST Road, and a family routine that now shares the house with Teams calls.",
- cards:[
-  {h:"Family persona",p:"Karthik (34) and Divya (32), both in IT at Siruseri and Taramani, with a 6-year-old and visiting parents every few months. They rent or own in Perumbakkam, Medavakkam, Porur or Velachery and want a home that feels calm after a loud work week."},
-  {h:"IT professional lifestyle",p:"Early stand-ups with US clients, late evening calls, weekday meals that need to be fast, and a strong need to switch off. Soft lighting, closed storage and a tidy entry keep the day's clutter out of sight."},
-  {h:"Hybrid / WFH culture",p:"Two or three office days a week means a desk that is used often but not daily. Fold-away, window-side or wardrobe-integrated desks work harder than a permanent study."},
-  {h:"Weekend family activities",p:"Filter coffee and a long breakfast, a floor-seating board game session, Sunday cooking with the grandparents, friends dropping in, and an evening at Besant Nagar or the beach."}
- ],
- groups:[
-  {t:"Everyday family living",d:"Shared spaces that stay relaxed, easy to clean and ready for guests.",p:"living",s:0,n:5},
-  {t:"Work from home, calmly",d:"Desks that sit comfortably inside a family home.",p:"office",s:0,n:5},
-  {t:"Weekend cooking and meals",d:"Open, bright kitchens and dining tables where the family gathers.",p:"kitchen",s:0,n:5},
-  {t:"Slow weekends and greenery",d:"Balcony mornings, indoor plants and reading corners.",p:"outdoor",s:0,n:5}
- ]},
-
-{id:"keywords", title:"Design keywords",
- intro:"Six words guide every decision in this book, from sofa fabric to switch plate.",
- kw:[
-  {h:"Modern",p:"Clean lines, handleless or slim-profile joinery, restrained decor."},
-  {h:"Warm",p:"Layered 2700–3000K lighting, oak tones and soft textiles against white walls."},
-  {h:"Functional",p:"Every wall earns its keep with storage; every piece has a second job."},
-  {h:"Family-centric",p:"Rounded corners, washable fabrics, zones for kids, parents and grandparents."},
-  {h:"Natural",p:"Cane, jute, cotton, stone and live plants for a lighter feel in humid weather."},
-  {h:"Timeless",p:"Neutral shells with swappable accents, so the home ages gracefully."}
- ],
- groups:[
-  {t:"Modern",p:"living",s:5,n:3},{t:"Warm",p:"bedroom",s:0,n:3},{t:"Functional",p:"kitchen",s:5,n:3},
-  {t:"Family-centric",p:"living",s:8,n:3},{t:"Natural",p:"outdoor",s:5,n:4},{t:"Timeless",p:"texture",s:0,n:4}
- ]},
-
-{id:"palette", title:"Colour palette",
- intro:"A grounded, sun-friendly palette. Light shells reflect Chennai's strong daylight; earthy accents keep rooms calm instead of clinical.",
- swatches:[
-  {n:"Warm white",c:"#FAF6EF",u:"Walls and ceilings. Reflects light without glare.",dark:1},
-  {n:"Beige",c:"#E6D9C3",u:"Upholstery, curtains, large rugs.",dark:1},
-  {n:"Oak wood",c:"#B58853",u:"Flooring, shutters, TV panel, furniture.",dark:0},
-  {n:"Sage green",c:"#97AB84",u:"Kids room, wardrobes, accent wall, plants.",dark:1},
-  {n:"Terracotta",c:"#C0623B",u:"Cushions, pottery, a single feature wall.",dark:0},
-  {n:"Charcoal",c:"#34322E",u:"Hardware, window frames, lamps, appliance fronts.",dark:0}
- ],
- groups:[
-  {t:"Warm white and beige",p:"living",s:12,n:4},{t:"Oak wood",p:"bedroom",s:6,n:4},{t:"Sage green",p:"outdoor",s:10,n:3},
-  {t:"Terracotta",p:"texture",s:4,n:3},{t:"Charcoal",p:"kitchen",s:10,n:3},{t:"Palette in a room",p:"living",s:16,n:3}
- ]},
-
-{id:"materials", title:"Material board",
- intro:"Chosen for humidity, salty coastal air, monsoon dampness and low upkeep. Nothing that swells, flakes or hides mould.",
- cards:[
-  {h:"Flooring",p:"Matte vitrified wood-look tiles or large-format porcelain. Avoid solid timber on ground floors and near balcony doors."},
-  {h:"Wood finishes",p:"BWP or marine plywood with laminate or PU finish. Light oak and walnut tones hide dust and fingerprints."},
-  {h:"Fabrics",p:"Cotton, linen blends and performance fabrics. Washable covers and quick-dry curtains handle humidity."},
-  {h:"Tiles",p:"Anti-skid matte tiles in bathrooms and utility. Athangudi-inspired patterns bring in local character."},
-  {h:"Stone",p:"Quartz or granite counters. Kota and Tandur stone for sills and balcony edges."},
-  {h:"Metal accents",p:"Brushed brass, matte black and stainless steel. Powder-coated or PVD finishes resist corrosion."}
- ],
- groups:[
-  {t:"Flooring",p:"texture",s:5,n:4},{t:"Wood finishes",p:"bedroom",s:10,n:4},{t:"Fabrics",p:"living",s:20,n:3},
-  {t:"Tiles",p:"texture",s:9,n:3},{t:"Stone",p:"kitchen",s:12,n:3},{t:"Metal accents",p:"texture",s:12,n:3}
- ]},
-
-{id:"onebhk", title:"1 BHK mood board",
- intro:"Roughly 450–650 sq ft. Think in layers: light colours, multipurpose furniture and vertical storage, so a small home never feels small.",
- groups:[
-  {t:"Compact living room",d:"Sofa-cum-bed, wall-mounted TV panel, a nesting table pair.",p:"living",s:21,n:5},
-  {t:"Bedroom",d:"Hydraulic storage bed and a full-height wardrobe, with a window-side nook.",p:"bedroom",s:2,n:4},
-  {t:"Kitchen",d:"Single-wall or compact L-shape with a chimney and pull-outs.",p:"kitchen",s:2,n:4},
-  {t:"Work desk",d:"A fold-down or window desk that disappears after hours.",p:"office",s:4,n:4},
-  {t:"Storage ideas",d:"Loft, under-bed and vertical shelving in light finishes.",p:"bedroom",s:14,n:3}
- ]},
-
-{id:"twobhk", title:"2 BHK family mood board",
- intro:"Roughly 850–1,200 sq ft. The sweet spot for young families: define zones with light and furniture instead of walls.",
- groups:[
-  {t:"Living room",d:"Cane and oak accents, a low sofa and a media wall with concealed storage.",p:"living",s:26,n:4},
-  {t:"Dining area",d:"A six-seater with bench seating and a crockery unit along one wall.",p:"kitchen",s:6,n:4},
-  {t:"Kids room",d:"Sage and oak, a bunk or loft bed, open play floor and a study ledge.",p:"bedroom",s:8,n:4},
-  {t:"Home office nook",d:"A desk built into a corner or the bedroom wall, with a task lamp and shelf.",p:"office",s:8,n:4},
-  {t:"Balcony",d:"Slatted seating, planters and a washable rug. Weatherproof by design.",p:"outdoor",s:0,n:4}
- ]},
-
-{id:"threebhk", title:"3 BHK premium family mood board",
- intro:"Roughly 1,400–2,000 sq ft. Space to be generous: a dedicated office, a proper guest suite and an entertainment corner that doubles as the evening hangout.",
- groups:[
-  {t:"Family living room",d:"Large L-shaped sofa, a layered ceiling, warm cove lighting.",p:"living",s:30,n:4},
-  {t:"Master bedroom",d:"Upholstered headboard, bedside wall lights, a walk-in or wall-to-wall wardrobe.",p:"bedroom",s:12,n:4},
-  {t:"Guest room",d:"Calm, uncluttered, with a daybed or double bed, luggage space and a small desk.",p:"bedroom",s:17,n:3},
-  {t:"Dedicated office",d:"Dual monitors, acoustic panels and closed storage for a tidy backdrop.",p:"office",s:12,n:3},
-  {t:"Entertainment area",d:"A soundproof-friendly media wall, recliners and a board-game ledge.",p:"living",s:34,n:3},
-  {t:"Pooja unit",d:"Wood or stone mandir with concealed storage, brass details and a warm spotlight.",p:"texture",s:14,n:3}
- ]},
-
-{id:"living", title:"Living room inspirations",
- intro:"Modern Indian style: clean silhouettes with warm wood, brass and handloom textures.",
- groups:[
-  {t:"Modern Indian style",d:"Contemporary lines with Indian craft: jaali, cane, brass, block print.",p:"living",s:0,n:6},
-  {t:"TV units",d:"Fluted panels, floating shelves and concealed cable management.",p:"living",s:6,n:5},
-  {t:"Seating",d:"Low profile sofas, accent chairs, floor cushions and a bench for casual use.",p:"living",s:11,n:5},
-  {t:"Decor",d:"Terracotta vases, indoor plants, a statement rug and soft table lamps.",p:"living",s:16,n:5}
- ]},
-
-{id:"kitchen", title:"Modular kitchen inspirations",
- intro:"Built for Indian cooking: strong chimney, deep drawers, heavy-duty hardware and a surface that wipes clean after tadka.",
- groups:[
-  {t:"Parallel kitchens",d:"Efficient for narrow plans. Keep the walkway about 1.2 m wide.",p:"kitchen",s:0,n:5},
-  {t:"L-shaped kitchens",d:"Open up to the dining area; room for a small breakfast perch.",p:"kitchen",s:5,n:5},
-  {t:"Storage ideas",d:"Corner carousels, masala pull-outs, tall units and a utility loft.",p:"kitchen",s:10,n:5},
-  {t:"Breakfast counters",d:"A 600 mm overhang with two stools and pendant lights.",p:"kitchen",s:15,n:5}
- ]},
-
-{id:"bedroom", title:"Bedroom inspirations",
- intro:"Rest-first rooms with cross-ventilation, blackout layers and a ceiling fan that still looks good.",
- groups:[
-  {t:"Master bedroom",d:"Quiet colours, warm bedside lighting and a wardrobe wall.",p:"bedroom",s:0,n:7},
-  {t:"Kids room",d:"Sage and oak, playful wall art, bunk beds and study corners.",p:"bedroom",s:7,n:7},
-  {t:"Guest bedroom",d:"Hotel-style calm: crisp bedding, a luggage bench and a small wardrobe.",p:"bedroom",s:14,n:6}
- ]},
-
-{id:"office", title:"Home office ideas",
- intro:"Productivity without a corporate feel. Ergonomic basics in a calm, family-friendly wrapper.",
- groups:[
-  {t:"IT professional setups",d:"Clean desks, cable trays, a good chair and soft light.",p:"office",s:0,n:5},
-  {t:"Dual monitor desks",d:"1500 × 650 mm minimum, monitor arms and a keyboard shelf.",p:"office",s:5,n:5},
-  {t:"Compact workstations",d:"Fold-down, wall-mounted and wardrobe-integrated desks.",p:"office",s:10,n:5},
-  {t:"Productivity spaces",d:"Daylight from the side, plants nearby, and a door or screen for call privacy.",p:"office",s:15,n:5}
- ]},
-
-{id:"balcony", title:"Balcony and utility ideas",
- intro:"Your free-air room. Plant-friendly, weather-tough and capable of absorbing laundry without looking like it.",
- groups:[
-  {t:"Balcony gardens",d:"Hardy choices: money plant, snake plant, curry leaf, jasmine, tulsi, aloe.",p:"outdoor",s:4,n:7},
-  {t:"Reading corners",d:"A cushioned bench, a side table and a breezy view.",p:"outdoor",s:11,n:7},
-  {t:"Laundry solutions",d:"Pull-down drying racks, a washer enclosure and a hidden utility cabinet.",p:"living",s:36,n:6}
- ]},
-
-{id:"storage", title:"Storage solutions",
- intro:"Chennai flats are short on wall space and long on belongings. Treat storage as architecture, not an afterthought.",
- groups:[
-  {t:"Wardrobes",d:"Floor-to-ceiling sliders, louvred shutters for airflow and loft cabinets above.",p:"bedroom",s:3,n:7},
-  {t:"Bed and under-floor storage",d:"Hydraulic beds and drawer plinths for linens and seasonal items.",p:"bedroom",s:18,n:5},
-  {t:"Entry, shoe and wall storage",d:"A slim shoe cabinet, key tray and bench at the door.",p:"living",s:25,n:4},
-  {t:"Kitchen pantry",d:"Tall pull-out larders, labelled jars and a monsoon-proof dry store.",p:"kitchen",s:16,n:4}
- ]}
-];
-
-/* ---------- RENDER ---------- */
-const used = {};
-const ratios = ['r1','r4','r2','r3','r5','r4','r1','r3'];
-let rIdx = 0;
-const lbList = [];
-
-function pick(pool,start,n,sec){
-  const arr = POOL[pool]; const out=[]; const u = used[sec] = used[sec] || new Set();
-  for(let i=0;i<arr.length && out.length<n;i++){
-    const id = arr[(start+i)%arr.length];
-    if(!u.has(id)){u.add(id);out.push(id);}
+/* ---------- generated grey placeholder drawings ---------- */
+function rng(s){return function(){s|=0;s=s+0x6D2B79F5|0;let t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+const hex=n=>Math.max(0,Math.min(255,Math.round(n))).toString(16).padStart(2,'0');
+const grey=v=>'#'+hex(v)+hex(v)+hex(v);
+const artCache={};
+function art(style,seed){
+  const key=style+seed; if(artCache[key])return artCache[key];
+  const r=rng(seed*9973+7), W=1200, H=1500, gy=1180; let s='', ground=true;
+  switch(style){
+    case 'grid':{
+      const x0=260,x1=940,top=160,cols=8,rows=20,cw=(x1-x0)/cols,rh=(gy-top)/rows;
+      s+=`<rect x="${x0}" y="${top}" width="${x1-x0}" height="${gy-top}" fill="#3b3e41"/>`;
+      for(let j=0;j<rows;j++)for(let i=0;i<cols;i++)s+=`<rect x="${x0+i*cw+6}" y="${top+j*rh+6}" width="${cw-12}" height="${rh-12}" fill="${grey(90+r()*120)}"/>`;
+      s+=`<rect x="110" y="660" width="170" height="${gy-660}" fill="#6b6f73"/><rect x="940" y="820" width="190" height="${gy-820}" fill="#55595c"/>`;break}
+    case 'fins':{
+      s+=`<rect x="200" y="250" width="800" height="${gy-250}" fill="#d9dbdd"/>`;
+      for(let i=0;i<40;i++)s+=`<rect x="${204+i*20}" y="250" width="${6+r()*4}" height="${gy-250}" fill="#2d3033"/>`;
+      s+=`<rect x="120" y="212" width="960" height="40" fill="#26282a"/><rect x="200" y="${gy-60}" width="800" height="60" fill="#3d4043"/>`;break}
+    case 'louvers':{
+      s+=`<rect x="160" y="420" width="880" height="${gy-420}" fill="#4b4e51"/>`;
+      for(let y=420;y<gy;y+=24)s+=`<rect x="160" y="${y}" width="880" height="12" fill="${grey(150+r()*70)}"/>`;
+      s+=`<rect x="380" y="700" width="440" height="${gy-700}" fill="#1f2123"/>`;
+      for(let y=700;y<gy;y+=18)s+=`<rect x="380" y="${y}" width="440" height="3" fill="#6d7175"/>`;
+      s+=`<rect x="130" y="390" width="940" height="34" fill="#2b2d2f"/>`;break}
+    case 'arches':{
+      s+=`<rect x="90" y="520" width="1020" height="${gy-520}" fill="#a2a5a8"/>`;
+      for(let row=0;row<2;row++){const y0=gy-(row+1)*320,w=170,gap=30;
+        for(let i=0;i<5;i++){const x=130+i*(w+gap)+ (row?0:0);
+          s+=`<path d="M${x} ${y0+320-20}V${y0+130}a${w/2} ${w/2} 0 0 1 ${w} 0V${y0+320-20}z" fill="${grey(38+row*10)}"/>`}}
+      s+=`<rect x="70" y="490" width="1060" height="40" fill="#34373a"/><rect x="90" y="${gy-340}" width="1020" height="20" fill="#6e7276"/>`;break}
+    case 'stepped':{
+      for(let k=0;k<6;k++){const w=960-k*140,x=120+k*70,y=gy-(k+1)*150;
+        s+=`<rect x="${x}" y="${y}" width="${w}" height="150" fill="${grey(66+k*26)}"/><rect x="${x}" y="${y}" width="${w}" height="12" fill="#222426"/>`;
+        for(let q=0;q<w/36;q++)s+=`<rect x="${x+8+q*36}" y="${y+30}" width="4" height="90" fill="#222426" opacity=".5"/>`}
+      break}
+    case 'courtyard':{
+      ground=false;
+      s+=`<polygon points="0,0 500,300 500,${gy} 0,${H}" fill="#6e7276"/><polygon points="${W},0 700,300 700,${gy} ${W},${H}" fill="#4a4e51"/>`;
+      s+=`<rect x="500" y="300" width="200" height="${gy-300}" fill="#d0d2d4"/><rect x="560" y="640" width="80" height="${gy-640}" fill="#2b2d2f"/>`;
+      s+=`<polygon points="0,${H} 500,${gy} 700,${gy} ${W},${H}" fill="#b6b8ba"/>`;
+      s+=`<polygon points="120,${H} 520,${gy} 700,${gy} 560,${H}" fill="#fff" opacity=".4"/>`;
+      for(let i=1;i<6;i++)s+=`<line x1="${i*100}" y1="${H}" x2="${500+i*40}" y2="${gy}" stroke="#8d9093" stroke-width="2"/>`;break}
   }
-  return out;
+  if(ground)s+=`<rect y="${gy}" width="${W}" height="${H-gy}" fill="#8e9195"/><polygon points="940,${gy} ${W},${gy} ${W},${gy+130} 640,${gy+130}" fill="#000" opacity=".18"/>`;
+  const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c3c6c9"/><stop offset="1" stop-color="#f1f2f3"/></linearGradient><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2"/><feColorMatrix type="saturate" values="0"/></filter></defs><rect width="${W}" height="${H}" fill="url(#sky)"/>${s}<rect width="${W}" height="${H}" filter="url(#n)" opacity=".12" style="mix-blend-mode:multiply"/></svg>`;
+  return artCache[key]='data:image/svg+xml;utf8,'+encodeURIComponent(svg);
 }
+const imgSrc=(p,k)=>(p.images&&p.images[k])||art(p.gallery[k].style,p.gallery[k].seed);
 
-function tiles(ids,alt){
-  return ids.map(id=>{
-    const r = ratios[(rIdx++)%ratios.length];
-    return `<button class="tile ${r}" data-full="${UL(id)}" aria-label="Open image: ${alt}"><img loading="lazy" decoding="async" src="${U(id)}" alt="${alt}"></button>`;
-  }).join('');
+/* ---------- skyline ---------- */
+const skyline=document.getElementById('skyline');
+const btns=PROJECTS.map((p,i)=>{
+  const li=document.createElement('li'); li.className='bldg'; li.style.setProperty('--g',p.g);
+  const b=document.createElement('button');
+  b.setAttribute('aria-label','Open project: '+p.name);
+  b.style.setProperty('--h',p.h); b.style.setProperty('--clip','polygon('+p.clip+')');
+  b.style.setProperty('--img','url("'+imgSrc(p,0)+'")');
+  const nm=document.createElement('span'); nm.className='nm'; nm.innerHTML=`${p.name}<small>${p.location}, ${p.year}</small>`;
+  li.append(b,nm); skyline.appendChild(li);
+  b.addEventListener('click',()=>openProject(i,b,b,'polygon('+p.clip+')'));
+  return b;
+});
+const heroImg=document.getElementById('heroImg');
+
+
+/* ---------- project sheet ---------- */
+const $=id=>document.getElementById(id);
+const sheet=$('sheet'), slides=$('shSlides'), reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+let current=-1, lastBtn=null, busy=false;
+
+function populate(i){
+  const p=PROJECTS[i], n=PROJECTS.length;
+  $('shTitle').textContent=p.name;
+  $('shFacts').innerHTML=[['Type',p.type],['Location',p.location],['Year',p.year],['Area',p.area],['Role',p.role],['Status',p.status]].map(([k,v])=>`<div><dt>${k}</dt><dd>${v}</dd></div>`).join('');
+  $('shProse').innerHTML=p.text.map(t=>`<p>${t}</p>`).join('');
+  slides.innerHTML=p.gallery.map((g,k)=>`<figure class="slide"><img src="${imgSrc(p,k)}" alt="${p.name}: ${g.cap}"><figcaption>${g.cap}</figcaption></figure>`).join('');
+  slides.scrollLeft=0; $('shCount').textContent='1 / '+p.gallery.length; $('shInfo').scrollTop=0;
+if(p.pdf){slides.insertAdjacentHTML('beforeend',`<figure class="slide"><iframe src="${p.pdf}#view=FitH" title="${p.name} PDF" style="width:100%;height:100%;border:0;background:#fff"></iframe><a href="${p.pdf}" target="_blank" style="position:absolute;top:16px;right:24px;background:#fff;color:#26229A;padding:8px 16px;border-radius:999px;font:600 13px sans-serif;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.3)">Open full PDF</a></figure>`);document.querySelector('.gctl').style.display='';$('shCount').textContent='1 / '+slides.children.length}
+  const pv=PROJECTS[(i+n-1)%n], nx=PROJECTS[(i+1)%n];
+  $('shPrev').innerHTML=`<small>Previous project</small>${pv.name}`;
+  $('shNext').innerHTML=`<small>Next project</small>${nx.name}`;
 }
+function setFx(fx,rect,clip){fx.style.left=rect.left+'px';fx.style.top=rect.top+'px';fx.style.width=rect.width+'px';fx.style.height=rect.height+'px';fx.style.clipPath='polygon('+clip+')'}
+function makeFx(p,rect,clip){const fx=document.createElement('div');fx.className='fx';fx.style.backgroundImage='url("'+imgSrc(p,0)+'")';setFx(fx,rect,clip);document.body.appendChild(fx);return fx}
+function afterTransition(el,fn){let done=false;const go=()=>{if(done)return;done=true;fn()};el.addEventListener('transitionend',e=>{if(e.target===el&&e.propertyName==='width')go()});setTimeout(go,reduce?20:1050)}
 
-const main = document.getElementById('main');
-const navlist = document.getElementById('navlist');
-
-// Cover
-main.innerHTML = `
-<header class="cover" id="cover">
-  <img src="${UL('1618221195710-dd6b41faaea6')}" alt="Warm modern living room with oak and sage tones">
-  <div class="txt">
-    <h1>Warm Homes for Chennai Families</h1>
-    <p class="vision">A mood board inspiration book for IT families in 1, 2 and 3 BHK apartments. Light, breathable, low-maintenance homes where work, family and festivals all fit.</p>
-    <p class="meta">Design vision: modern, warm and natural, with spaces that cope with Chennai's heat, humidity and monsoon. Prepared for client review.</p>
-  </div>
-  <div class="strip" aria-hidden="true">
-    <span style="background:#FAF6EF"></span><span style="background:#E6D9C3"></span><span style="background:#B58853"></span><span style="background:#97AB84"></span><span style="background:#C0623B"></span><span style="background:#34322E"></span>
-  </div>
-</header>`;
-navlist.innerHTML = `<li><a href="#cover">Cover</a></li>`;
-
-SECTIONS.forEach(S=>{
-  let h = `<section id="${S.id}"><div class="sec-head"><h2>${S.title}</h2><p>${S.intro}</p></div>`;
-  if(S.cards) h += `<div class="cards">${S.cards.map(c=>`<div class="card"><h4>${c.h}</h4><p>${c.p}</p></div>`).join('')}</div>`;
-  if(S.kw) h += `<div class="kw-intro">${S.kw.map((c,i)=>`<div class="card ${i%3==2?'dark':''}"><h4>${c.h}</h4><p>${c.p}</p></div>`).join('')}</div>`;
-  if(S.swatches) h += `<div class="swatches">${S.swatches.map(s=>`<div class="sw" style="background:${s.c};color:${s.dark?'#34322E':'#fff'}"><b>${s.n}</b>${s.c}<br><span>${s.u}</span></div>`).join('')}</div>`;
-  S.groups.forEach(g=>{
-    const ids = pick(g.p,g.s,g.n,S.id);
-    h += `<div class="group"><h3>${g.t}</h3>${g.d?`<p class="note">${g.d}</p>`:''}<div class="masonry">${tiles(ids,g.t+' inspiration')}</div></div>`;
+function openProject(i,btn,rectEl,clipStr){
+  if(busy||current>=0)return; busy=true; current=i; lastBtn=btn;
+  const p=PROJECTS[i]; populate(i);
+  const from=rectEl.getBoundingClientRect(), to=$('shGallery').getBoundingClientRect();
+  const fx=makeFx(p,from,clipStr.replace(/^polygon\(|\)$/g,''));
+  document.documentElement.classList.add('locked');
+  btns.forEach(b=>b.style.visibility=''); btn.style.visibility='hidden';
+  fx.getBoundingClientRect();
+  requestAnimationFrame(()=>setFx(fx,to,FULL_CLIP));
+  afterTransition(fx,()=>{
+    sheet.classList.add('open');
+    requestAnimationFrame(()=>{sheet.classList.add('in');fx.remove();$('shClose').focus({preventScroll:true});busy=false});
   });
-  h += `</section>`;
-  main.insertAdjacentHTML('beforeend',h);
-  navlist.insertAdjacentHTML('beforeend',`<li><a href="#${S.id}">${S.title}</a></li>`);
-});
-
-main.insertAdjacentHTML('beforeend',`<div class="cta"><h2>Next step</h2><p>Tell us your flat size, family size and work-from-home days. We will turn the boards you like into a room-by-room layout, material schedule and budget.</p><p style="margin-top:14px">Images are for inspiration and mood only. Final materials, finishes and furniture will be specified during design development.</p></div>`);
-
-/* ---------- Broken image handling: remove tile so grid stays clean ---------- */
-document.querySelectorAll('.tile img').forEach(img=>{
-  img.addEventListener('error',()=>{
-    const t=img.closest('.tile'); if(t) t.remove();
-    refreshLB();
-  },{once:true});
-});
-document.querySelectorAll('.cover>img').forEach(img=>img.addEventListener('error',()=>{
-  img.style.display='none';
-  document.querySelector('.cover').style.background='linear-gradient(135deg,#8a6a45,#34322E)';
-}));
-
-/* ---------- Lightbox ---------- */
-const lb=document.getElementById('lb'), lbImg=lb.querySelector('img');
-let cur=0, items=[];
-function refreshLB(){ items=[...document.querySelectorAll('.tile')]; }
-refreshLB();
-function show(i){cur=(i+items.length)%items.length;lbImg.src=items[cur].dataset.full;lbImg.alt=items[cur].querySelector('img').alt;}
-document.addEventListener('click',e=>{
-  const t=e.target.closest('.tile');
-  if(t){refreshLB();show(items.indexOf(t));lb.classList.add('open');lb.querySelector('.x').focus();}
-});
-lb.querySelector('.x').onclick=()=>lb.classList.remove('open');
-lb.querySelector('.p').onclick=()=>show(cur-1);
-lb.querySelector('.n').onclick=()=>show(cur+1);
-lb.addEventListener('click',e=>{if(e.target===lb)lb.classList.remove('open')});
+}
+function closeProject(){
+  if(busy||current<0)return; busy=true;
+  const p=PROJECTS[current], gal=$('shGallery').getBoundingClientRect();
+  sheet.classList.remove('in');
+  setTimeout(()=>{
+    const fx=makeFx(p,gal,FULL_CLIP);
+    sheet.classList.remove('open');
+    const target=(lastBtn.id==='heroFig'?heroImg:btns[current]).getBoundingClientRect();
+    const clip=lastBtn.id==='heroFig'?FULL_CLIP:p.clip;
+    fx.getBoundingClientRect();
+    requestAnimationFrame(()=>setFx(fx,target,clip));
+    afterTransition(fx,()=>{
+      fx.remove(); btns.forEach(b=>b.style.visibility='');
+      document.documentElement.classList.remove('locked');
+      lastBtn.focus({preventScroll:true}); current=-1; busy=false;
+    });
+  },reduce?0:420);
+}
+function swap(dir){
+  const n=PROJECTS.length; current=(current+dir+n)%n; populate(current);
+  btns.forEach(b=>b.style.visibility=''); lastBtn=btns[current];
+}
+$('shClose').addEventListener('click',closeProject);
+$('shPrev').addEventListener('click',()=>swap(-1));
+$('shNext').addEventListener('click',()=>swap(1));
+$('gPrev').addEventListener('click',()=>slides.scrollBy({left:-slides.clientWidth,behavior:'smooth'}));
+$('gNext').addEventListener('click',()=>slides.scrollBy({left:slides.clientWidth,behavior:'smooth'}));
+slides.addEventListener('scroll',()=>{const k=Math.round(slides.scrollLeft/slides.clientWidth);$('shCount').textContent=(k+1)+' / '+slides.children.length},{passive:true});
 document.addEventListener('keydown',e=>{
-  if(!lb.classList.contains('open'))return;
-  if(e.key==='Escape')lb.classList.remove('open');
-  if(e.key==='ArrowLeft')show(cur-1);
-  if(e.key==='ArrowRight')show(cur+1);
+  if(!sheet.classList.contains('open'))return;
+  if(e.key==='Escape')closeProject();
+  else if(e.key==='ArrowRight'&&document.activeElement===slides)slides.scrollBy({left:slides.clientWidth,behavior:'smooth'});
+  else if(e.key==='ArrowLeft'&&document.activeElement===slides)slides.scrollBy({left:-slides.clientWidth,behavior:'smooth'});
+  else if(e.key==='Tab'){
+    const f=[...sheet.querySelectorAll('button,[tabindex="0"]')];const a=f[0],z=f[f.length-1];
+    if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}
+    else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}
+  }
 });
 
-/* ---------- Nav highlight ---------- */
-const links=[...document.querySelectorAll('nav.index a')];
-const io=new IntersectionObserver(es=>{
-  es.forEach(en=>{ if(en.isIntersecting){ links.forEach(l=>l.classList.toggle('on',l.getAttribute('href')==='#'+en.target.id)); }});
-},{rootMargin:'-30% 0px -60% 0px'});
-document.querySelectorAll('header.cover,section').forEach(s=>io.observe(s));
+/* ---------- desk ---------- */
+(function(){
+  // ruler ticks
+  let top='',bot='',lab='';
+  for(let i=0;i<=92;i++){const x=22+i*8,long=i%10===0,mid=i%5===0;top+=`M${x} 4v${long?22:mid?15:9}`;if(long)lab+=`<text x="${x+3}" y="34">${i/10}</text>`}
+  for(let i=0;i<=115;i++){const x=22+i*6.4,long=i%10===0,mid=i%5===0;bot+=`M${x} 76v${long?-22:mid?-15:-9}`;if(long)lab+=`<text x="${x+3}" y="56">${i/10}</text>`}
+  $('rulerTop').setAttribute('d',top);$('rulerBot').setAttribute('d',bot);$('rulerLabels').innerHTML=lab;
+  // terrazzo chips
+  const r=rng(77);let chips='';
+  for(let i=0;i<46;i++){const x=10+r()*110,y=10+r()*110,s=3+r()*7;
+    chips+=`<polygon points="${x},${y} ${x+s},${y+s*.3} ${x+s*.7},${y+s} ${x-s*.2},${y+s*.6}" fill="${grey(60+r()*150)}"/>`}
+  $('terrChips').innerHTML=chips;
+
+  const desk=$('deskEl'), note=$('note'), objs=[...desk.querySelectorAll('.obj')];
+  const small=()=>matchMedia('(max-width:820px)').matches;
+  let active=null, lastType='mouse';
+  function place(o){
+    if(small()){note.style.left=note.style.top='';return}
+    const d=desk.getBoundingClientRect(), b=o.getBoundingClientRect(), nw=note.offsetWidth, nh=note.offsetHeight;
+    let x=(b.left+b.right)/2-d.left<d.width/2 ? b.right-d.left+18 : b.left-d.left-nw-18;
+    x=Math.max(12,Math.min(d.width-nw-12,x));
+    const y=Math.max(12,Math.min(d.height-nh-12,b.top-d.top));
+    note.style.left=x+'px';note.style.top=y+'px';
+  }
+  function show(o){
+    if(active)active.classList.remove('active');
+    active=o;o.classList.add('active');
+    const n=NOTES[o.dataset.note];
+    note.innerHTML=`<h3>${n.title}</h3>${n.html}`;
+    place(o);note.classList.add('show');
+  }
+  function hide(){if(active)active.classList.remove('active');active=null;note.classList.remove('show')}
+  objs.forEach(o=>{
+    o.addEventListener('pointerdown',e=>lastType=e.pointerType);
+    o.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse')show(o)});
+    o.addEventListener('pointerleave',e=>{if(e.pointerType==='mouse')hide()});
+    o.addEventListener('focus',()=>show(o));
+    o.addEventListener('blur',hide);
+    o.addEventListener('click',()=>{if(lastType==='mouse'&&o===active&&document.activeElement!==o)return;
+      if(lastType!=='mouse'){active===o?hide():show(o)}});
+  });
+  document.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse'&&!e.target.closest('.obj'))hide()});
+})();
+
+/* ---------- tower that builds as you scroll ---------- */
+(function(){
+  const NS='http://www.w3.org/2000/svg',N=14,FH=34,BX=22,BW=54,GY=568;
+  const svg=$('towerSvg'),label=$('towerLabel');
+  const el=(n,a,p)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);(p||svg).appendChild(e);return e};
+  el('line',{x1:2,x2:98,y1:GY,y2:GY,class:'t-ground'});
+  for(let x=10;x<92;x+=6)el('line',{x1:x,y1:GY+3,x2:x-4,y2:GY+11,class:'t-hair'});
+
+  // crane mast (static) and moving jib
+  const crane=el('g',{id:'crane'});
+  let d='M88 '+GY;for(let y=GY,k=0;y>30;y-=8,k++)d+=`L${k%2?86.5:89.5} ${y-8}`;
+  el('path',{d,class:'t-crane'},crane);
+  el('line',{x1:86,x2:86,y1:GY,y2:30,class:'t-crane'},crane);el('line',{x1:90,x2:90,y1:GY,y2:30,class:'t-crane'},crane);
+  const jib=el('g',{id:'jib'},crane), jy=GY-FH-14;
+  el('line',{x1:10,x2:98,y1:jy,y2:jy,class:'t-crane'},jib);
+  el('line',{x1:10,x2:88,y1:jy-6,y2:jy,class:'t-crane'},jib);
+  el('rect',{x:92,y:jy-6,width:6,height:6,class:'t-crane-solid'},jib);
+  el('line',{x1:30,x2:30,y1:jy,y2:jy+16,class:'t-crane'},jib);
+  el('rect',{x:20,y:jy+16,width:20,height:4,class:'t-crane-solid'},jib);
+
+  const floors=[];
+  for(let i=0;i<N;i++){
+    const y=GY-(i+1)*FH,g=el('g',{class:'fl'});
+    el('rect',{x:BX,y,width:BW,height:FH,class:'t-slab'},g);
+    for(let k=0;k<4;k++)el('rect',{x:BX+6+k*12,y:y+9,width:8,height:16,class:'t-win'+((i*7+k*3)%5===0?' lt':'')},g);
+    floors.push(g);
+  }
+  const roof=el('g',{class:'fl'}),topY=GY-N*FH;
+  el('rect',{x:BX-2,y:topY-6,width:BW+4,height:6,class:'t-slab'},roof);
+  el('line',{x1:BX+BW/2,x2:BX+BW/2,y1:topY-6,y2:topY-44,class:'t-ground'},roof);
+  el('circle',{cx:BX+BW/2,cy:topY-46,r:2,class:'t-crane-solid'},roof);
+
+  let last=-1,ticking=false;
+  function update(){
+    const max=document.documentElement.scrollHeight-innerHeight, p=max>0?Math.min(1,Math.max(0,scrollY/max)):0;
+    const f=Math.max(1,Math.min(N,Math.floor(p*(N+1)))), done=p>.975;
+    if(f!==last||true){
+      floors.forEach((g,i)=>g.classList.toggle('on',i<f));
+      roof.classList.toggle('on',done);
+      crane.classList.toggle('gone',done);
+      jib.style.transform=`translateY(${-(f-1)*FH}px)`;
+      label.textContent=done?'Topped out':`Floor ${f} of ${N}`;
+      last=f;
+    }
+  }
+  addEventListener('scroll',()=>{if(ticking)return;ticking=true;requestAnimationFrame(()=>{ticking=false;update()})},{passive:true});
+  addEventListener('resize',update);update();
+})();
 </script>
 </body>
 </html>
